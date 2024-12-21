@@ -1,5 +1,6 @@
 package pages;
 
+import utils.TestUtils;
 import net.serenitybdd.annotations.Step;
 
 public class Homepage {
@@ -10,6 +11,7 @@ OrangrHrmHomePage homepage;
     public void OpenAppication()
     {
         homepage.open();
+        TestUtils.addDelay(3000);
     }
 
     @Step

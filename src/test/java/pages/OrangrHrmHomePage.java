@@ -7,7 +7,8 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebElement;
 
-@DefaultUrl("https://opensource-demo.orangehrmlive.com")
+
+@DefaultUrl("${base.url}")
 
 public class OrangrHrmHomePage extends PageObject {
 
