@@ -8,7 +8,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebElement;
 
 
-@DefaultUrl("${base.url}")
+@DefaultUrl("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
 
 public class OrangrHrmHomePage extends PageObject {
 

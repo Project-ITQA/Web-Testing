@@ -14,23 +14,29 @@ public class Hooks {
     public void setUp() {
         System.out.println("Starting Browser...");
 
-        // Dynamically select browser (Edge or Chrome)
-        String selectedBrowser = BrowserSelector.getDefaultBrowser();
+        String selectedBrowser = System.getProperty("browser", BrowserSelector.getDefaultBrowser());
         System.setProperty("webdriver.driver", selectedBrowser);
 
-        // Get the driver and maximize the window
-        driver = ThucydidesWebDriverSupport.getDriver();
-        driver.manage().window().maximize();
-
-        System.out.println("Browser started: " + selectedBrowser);
+        try {
+            driver = ThucydidesWebDriverSupport.getDriver();
+            driver.manage().window().maximize();
+            System.out.println("Browser started: " + selectedBrowser);
+        } catch (Exception e) {
+            System.err.println("Failed to start the browser: " + e.getMessage());
+            throw e;
+        }
     }
 
     @After
     public void tearDown() {
         System.out.println("Stopping Browser...");
         if (driver != null) {
-            driver.quit();
-            System.out.println("Browser stopped.");
+            try {
+                driver.quit();
+                System.out.println("Browser stopped.");
+            } catch (Exception e) {
+                System.err.println("Error while stopping the browser: " + e.getMessage());
+            }
         }
     }
 }
