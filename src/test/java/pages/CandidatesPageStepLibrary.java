@@ -15,4 +15,23 @@ public class CandidatesPageStepLibrary {
         candidatesPage.clickAddCandidateButton();
     }
 
+    @Step
+    public void verifyCandidateRowAvailability(String firstName, String lastName) {
+        candidatesPage.verifyCandidateRow(firstName, lastName);
+    }
+
+    @Step
+    public void clickDeleteButton(String firstName, String lastName) {
+        candidatesPage.clickDeleteButton(firstName, lastName);
+    }
+
+    @Step
+    public void clickConfirmDeleteButton() {
+        candidatesPage.clickConfirmDeleteButton();
+    }
+
+    @Step
+    public void verifyCandidateRowNonAvailability(String firstName, String lastName) {
+        candidatesPage.verifyNotCandidateRow(firstName, lastName);
+    }
 }
