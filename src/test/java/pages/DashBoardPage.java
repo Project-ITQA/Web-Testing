@@ -4,7 +4,7 @@ import utils.TestUtils;
 import net.serenitybdd.core.pages.PageObject;
 import org.junit.Assert;
 
-public class OrangrHrmDashboard extends PageObject {
+public class DashBoardPage extends PageObject {
 
 
     public void Loginverify()
@@ -14,6 +14,6 @@ public class OrangrHrmDashboard extends PageObject {
         System.out.println(currentURL);
         assert currentURL != null;
         Assert.assertTrue(currentURL.contains("dashboard"));
-        TestUtils.addDelay(3000);
+        TestUtils.addDelay(1000);
     }
 }

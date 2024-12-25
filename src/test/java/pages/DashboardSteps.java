@@ -2,9 +2,9 @@ package pages;
 
 import net.serenitybdd.annotations.Step;
 
-public class Dashboard {
+public class DashboardSteps {
 
-OrangrHrmDashboard orangrHrmDashboard;
+DashBoardPage orangrHrmDashboard;
 
     @Step
     public void VerifyAdminLogin()

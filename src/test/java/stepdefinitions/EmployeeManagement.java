@@ -1,33 +1,36 @@
 package stepdefinitions;
 
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
 import pages.DashboardSteps;
 import pages.LoginSteps;
 
-public class LoginToApplication {
+public class EmployeeManagement {
     @Steps
-    LoginSteps loginSteps;
+    LoginSteps home;
 
+    @Steps
+    DashboardSteps dash;
 
-
-    @Given("user is on home page")
+    @Given("user is on the Add Employee page")
     public void userIsOnHomePage() {
         home.OpenAppication();
     }
 
-    @When("user enters {string} as username")
+    @When("user enters valid employee details")
     public void userEnterUsername(String username) {
         home.EnterUserName(username);
     }
 
-    @When("user enters {string} as password")
+    @When("user saves the new employee")
     public void userEnterPassword(String password) {
         home.EnterPasword(password);
         home.ClickLoginButton();
     }
 
-    @Then("user should be able to login")
+    @Then("user should see the employee in the employee list")
     public void userShouldBeAbleToLogin() {
         dash.VerifyAdminLogin();
     }
