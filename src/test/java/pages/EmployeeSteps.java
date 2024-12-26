@@ -1,15 +1,39 @@
 package pages;
 
 import net.serenitybdd.annotations.Step;
+import net.serenitybdd.annotations.Steps;
+
+import static org.junit.Assert.assertTrue;
 
 public class EmployeeSteps extends AuthenticatedBaseTest{
 
+//    @Steps
     EmployeePage employeePage;
 
     @Step
-    public void openEmployeePage() {
-        loginAsAdmin();
+    public void navigateToAddEmployeePage() {
+        employeePage.navigateToAddEmployee();
 
 
+    }
+
+    @Step
+    public void enterEmployeeDetails(String firstName, String lastName) {
+        employeePage.enterEmployeeDetails(firstName, lastName);
+    }
+
+    @Step
+    public void saveEmployee() {
+        employeePage.saveEmployee();
+    }
+
+    @Step
+    public void redirectToViewPersonalDetails() {
+        employeePage.redirectToViewPersonalDetails();
+    }
+
+    @Step
+    public void verifyEmployeeDetails(String employeeName) {
+        employeePage.verifyEmployeeDetails(employeeName);
     }
 }

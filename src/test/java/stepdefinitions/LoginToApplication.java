@@ -7,8 +7,10 @@ import pages.LoginSteps;
 
 public class LoginToApplication {
     @Steps
-    LoginSteps loginSteps;
+    LoginSteps home;
 
+    @Steps
+    DashboardSteps dash;
 
 
     @Given("user is on home page")
@@ -21,7 +23,7 @@ public class LoginToApplication {
         home.EnterUserName(username);
     }
 
-    @When("user enters {string} as password")
+    @And("user enters {string} as password")
     public void userEnterPassword(String password) {
         home.EnterPasword(password);
         home.ClickLoginButton();

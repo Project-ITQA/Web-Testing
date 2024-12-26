@@ -1,37 +1,43 @@
 package stepdefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
-import pages.DashboardSteps;
-import pages.LoginSteps;
+import pages.EmployeeSteps;
 
 public class EmployeeManagement {
     @Steps
-    LoginSteps home;
+    EmployeeSteps employeeSteps;
 
-    @Steps
-    DashboardSteps dash;
 
-    @Given("user is on the Add Employee page")
-    public void userIsOnHomePage() {
-        home.OpenAppication();
+    @Given("user is logged in as an Admin")
+    public void userIsLoggedInAsAdmin() {
+        employeeSteps.loginAsAdmin();
     }
 
-    @When("user enters valid employee details")
-    public void userEnterUsername(String username) {
-        home.EnterUserName(username);
+    @Given("user navigates to the Add Employee page")
+    public void navigateToAddEmployeePage() {
+
+        employeeSteps.navigateToAddEmployeePage();
     }
 
-    @When("user saves the new employee")
-    public void userEnterPassword(String password) {
-        home.EnterPasword(password);
-        home.ClickLoginButton();
+    @When("user enters valid employee details {string} and {string}")
+    public void userEnterUsername(String firstName, String lastName) {
+
+        employeeSteps.enterEmployeeDetails(firstName, lastName);
     }
 
-    @Then("user should see the employee in the employee list")
-    public void userShouldBeAbleToLogin() {
-        dash.VerifyAdminLogin();
+    @And("user saves the new employee")
+    public void userEnterPassword() {
+        employeeSteps.saveEmployee();
+    }
+
+    @Then("user should see the employee {string} in the employee list")
+    public void userShouldSeeEmployeeInTheEmployeeList(String fullName) {
+
+        employeeSteps.redirectToViewPersonalDetails();
+        employeeSteps.verifyEmployeeDetails(fullName);
     }
 }
