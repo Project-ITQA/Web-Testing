@@ -34,4 +34,29 @@ public class CandidatesPageStepLibrary {
     public void verifyCandidateRowNonAvailability(String firstName, String lastName) {
         candidatesPage.verifyNotCandidateRow(firstName, lastName);
     }
+
+    @Step
+    public void typeIntoSearchBox(String text) {
+        candidatesPage.typeIntoSearchBox(text);
+    }
+
+    @Step
+    public void verifySearchDropDownItemExists(String firstName, String lastName) {
+        candidatesPage.verifySearchDropDownItemExists(firstName, lastName);
+    }
+
+    @Step
+    public void clickDropDownItem(String firstName, String lastName) {
+        candidatesPage.clickDropDownItem(firstName, lastName);
+    }
+
+    @Step
+    public void clickSearchButton() {
+        candidatesPage.clickSearchButton();
+    }
+
+    @Step
+    public void verifyOnlyOneRowExists(String firstName, String lastName) {
+        candidatesPage.verifyOnlyOneRowExists(firstName, lastName);
+    }
 }
