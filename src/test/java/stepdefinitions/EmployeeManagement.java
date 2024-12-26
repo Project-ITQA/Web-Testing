@@ -40,4 +40,21 @@ public class EmployeeManagement {
         employeeSteps.redirectToViewPersonalDetails();
         employeeSteps.verifyEmployeeDetails(fullName);
     }
+
+
+    @When("user enters invalid employee details {string} and {string}")
+    public void userEntersInvalidEmployeeDetails(String firstName, String lastName) {
+        employeeSteps.enterEmployeeDetails(firstName, lastName);
+    }
+
+    @Then("user should not be redirected to employee details page")
+    public void userShouldNotBeRedirectedToEmployeeDetailsPage() {
+        employeeSteps.verifyNoRedirectionToPersonalDetails();
+    }
+
+    @Then("user should not see the invalid employee {string} in the employee list")
+    public void userShouldNotSeeInvalidEmployeeInEmployeeList(String fullName) {
+        employeeSteps.verifyInvalidEmployeeNotInList(fullName);
+    }
+
 }

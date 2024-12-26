@@ -97,5 +97,31 @@ public class EmployeePage extends PageObject {
     }
 
 
+//    for invalid user names
+
+
+    public void verifyNoRedirectionToPersonalDetails() {
+        boolean isRedirected = wait.until(ExpectedConditions.urlContains("pim/viewPersonalDetails/empNumber"));
+
+        if (isRedirected) {
+            throw new AssertionError("Unexpected redirection to the employee personal details page with invalid employee details.");
+        }
+    }
+
+    public void verifyEmployeeNotInList(String employeeName) {
+        pimMenuItem.click();
+        wait.until(ExpectedConditions.visibilityOf(employeeListTab)).click();
+
+        wait.until(ExpectedConditions.visibilityOf(employeeNameInputField)).sendKeys(employeeName);
+        searchButton.click();
+
+        boolean isDisplayed = searchResult.isDisplayed();
+        if (isDisplayed) {
+            throw new AssertionError("Invalid employee with name " + employeeName + " should not be listed.");
+        }
+    }
+
+
+
 
 }

@@ -36,4 +36,16 @@ public class EmployeeSteps extends AuthenticatedBaseTest{
     public void verifyEmployeeDetails(String employeeName) {
         employeePage.verifyEmployeeDetails(employeeName);
     }
+
+
+    @Step
+    public void verifyNoRedirectionToPersonalDetails() {
+        employeePage.verifyNoRedirectionToPersonalDetails();
+    }
+
+    @Step
+    public void verifyInvalidEmployeeNotInList(String employeeName) {
+        employeePage.verifyEmployeeNotInList(employeeName);
+    }
+
 }
