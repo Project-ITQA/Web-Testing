@@ -1,6 +1,7 @@
 package pages;
 
 import net.serenitybdd.annotations.Step;
+import utils.TestUtils;
 
 public class CandidatesPageStepLibrary {
     OrangeHrmCandidatesPage candidatesPage;
@@ -27,6 +28,7 @@ public class CandidatesPageStepLibrary {
 
     @Step
     public void clickConfirmDeleteButton() {
+        TestUtils.addDelay(3000);
         candidatesPage.clickConfirmDeleteButton();
     }
 

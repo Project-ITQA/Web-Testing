@@ -6,12 +6,8 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.ui.Button;
 import org.junit.Assert;
-import org.openqa.selenium.WebElement;
 import utils.TestUtils;
-
 import java.util.List;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 @DefaultUrl("https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates")
 public class OrangeHrmCandidatesPage extends PageObject {
@@ -38,7 +34,6 @@ public class OrangeHrmCandidatesPage extends PageObject {
     }
 
     public void verifyCandidateRow(String firstName, String lastName) {
-        TestUtils.addDelay(3000);
         WebElementFacade row = getCandidateRow(firstName, lastName);
         Assert.assertNotNull(row);
     }
@@ -54,7 +49,9 @@ public class OrangeHrmCandidatesPage extends PageObject {
 
     public void clickConfirmDeleteButton() {
         TestUtils.addDelay(3000);
-        withTimeoutOf(5, SECONDS).waitForPresenceOf(By.cssSelector(".oxd-button--label-danger")).click();
+        WebElementFacade confirmDeleteButton = find(By.cssSelector(".oxd-button--label-danger"));
+        confirmDeleteButton.waitUntilVisible();
+        confirmDeleteButton.click();
     }
 
     public void verifyNotCandidateRow(String firstName, String lastName) {
@@ -64,13 +61,14 @@ public class OrangeHrmCandidatesPage extends PageObject {
 
     public void typeIntoSearchBox(String text) {
         WebElementFacade searchBox = find(By.xpath("//div[contains(@class,'oxd-input-group') and .//label[text()='Candidate Name']]//input"));
+        searchBox.waitUntilVisible();
         searchBox.sendKeys(text);
     }
 
     public void verifySearchDropDownItemExists(String firstName, String lastName) {
-        WebElement dropDownItem;
         try{
-            dropDownItem = withTimeoutOf(5, SECONDS).waitForPresenceOf(By.xpath("//div[contains(@class, 'oxd-autocomplete-option') and contains(text(), '"+ firstName + "') and contains(text(), '" + lastName + "')]"));
+            WebElementFacade dropDownItem = find(By.xpath("//div[contains(@class, 'oxd-autocomplete-option') and contains(text(), '"+ firstName + "') and contains(text(), '" + lastName + "')]"));
+            dropDownItem.waitUntilVisible();
             Assert.assertNotNull(dropDownItem);
         } catch (Exception e) {
             Assert.fail("Could not find search drop down item");
@@ -78,12 +76,14 @@ public class OrangeHrmCandidatesPage extends PageObject {
     }
 
     public void clickDropDownItem(String firstName, String lastName) {
-        WebElement dropDownItem = withTimeoutOf(5, SECONDS).waitForPresenceOf(By.xpath("//div[contains(@class, 'oxd-autocomplete-option') and contains(text(), '"+ firstName + "') and contains(text(), '" + lastName + "')]"));
+        WebElementFacade dropDownItem = find(By.xpath("//div[contains(@class, 'oxd-autocomplete-option') and contains(text(), '"+ firstName + "') and contains(text(), '" + lastName + "')]"));
+        dropDownItem.waitUntilVisible();
         dropDownItem.click();
     }
 
     public void clickSearchButton(){
         WebElementFacade searchButton = find(By.xpath("//button[contains(text(), 'Search')]"));
+        searchButton.waitUntilVisible();
         searchButton.click();
     }
 
