@@ -17,12 +17,6 @@ public class BrowserSelector {
             return browser;
         }
 
-        browser = checkForBrowser("chrome", "where /r \"C:\\Program Files\" brave.exe"); // Fallback to Chrome
-        if (browser != null) {
-            System.out.println("Brave is available.");
-            return browser;
-        }
-
         System.out.println("No supported browser found.");
         return null;
     }
