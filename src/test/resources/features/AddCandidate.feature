@@ -14,3 +14,11 @@ Feature: Add Candidate
     When User clicks the submit button
     Then User is directed to the view candidate page
     Then User can see candidate "Saman" "Kumara"
+
+  Scenario: Add Candidate without filling mandatory fields
+    Given User is on the Recruitment Candidates page
+    And User clicks on the Add button
+    And User is navigated to the Add Candidate page
+    And User fills the first name "Saman" and last name "Kumara"
+    When User clicks the submit button
+    Then User can see the required message under the email field

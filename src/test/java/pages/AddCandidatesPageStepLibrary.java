@@ -34,4 +34,9 @@ public class AddCandidatesPageStepLibrary {
     public void clickSubmit() {
         addCandidatePage.clickSubmitButton();
     }
+
+    @Step
+    public void verifyEmailRequiredMessage(){
+        addCandidatePage.verifyEmailRequiredMessage();
+    }
 }
