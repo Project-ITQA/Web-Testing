@@ -76,9 +76,13 @@ public class OrangeHrmCandidatesPage extends PageObject {
     }
 
     public void clickDropDownItem(String firstName, String lastName) {
-        WebElementFacade dropDownItem = find(By.xpath("//div[contains(@class, 'oxd-autocomplete-option') and contains(text(), '"+ firstName + "') and contains(text(), '" + lastName + "')]"));
-        dropDownItem.waitUntilVisible();
-        dropDownItem.click();
+        try{
+            WebElementFacade dropDownItem = find(By.xpath("//div[contains(@class, 'oxd-autocomplete-option') and contains(text(), '" + firstName + "') and contains(text(), '" + lastName + "')]"));
+            dropDownItem.waitUntilVisible();
+            dropDownItem.click();
+        }catch (Exception e) {
+            Assert.fail("Could not find drop down item");
+        }
     }
 
     public void clickSearchButton(){
