@@ -42,8 +42,44 @@ public class EmployeePage extends PageObject {
     @FindBy(xpath = "//div[@class='oxd-table-body']//div[contains(text(), 'Yukthi Hettiarachchi')]")
     private WebElement searchResult;
 
-    @FindBy(xpath = "//h6[text()='Yukthi Hettiarachchi']")
+//    @FindBy(xpath = "//h6[text()='Yukthi Hettiarachchi']")
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[1]/div[1]/div[1]/h6[text()]")
     private WebElement nameHeader;
+
+
+
+    @FindBy(xpath = "//input[@type='checkbox' and @wfd-id='id6']")
+    private WebElement createLoginToggle;
+
+    @FindBy(xpath = "//div[@class='oxd-switch-wrapper']//input[@type='checkbox']")
+    private WebElement checkbox;
+
+//    @FindBy(xpath = "//label[input[@wfd-id='id6']]")
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[2]/div/label/span")
+    private WebElement checkboxLabel;
+
+
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[3]/div/div[1]/div/div[2]/input")
+    private WebElement usernameField;
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[1]/div/div[2]/input")
+    private WebElement passwordField;
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[2]/div/div[2]/input")
+    private WebElement confirmPasswordField;
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[2]/div/label")
+    private WebElement enabledRadioButton;
+
+    @FindBy(css = "li.oxd-userdropdown")
+    private WebElement userDropdown;
+
+    @FindBy(css = "a.oxd-userdropdown-link[href='/web/index.php/auth/logout']")
+    private WebElement logoutLink;
+
 
     private WebDriverWait wait;
 
@@ -85,8 +121,8 @@ public class EmployeePage extends PageObject {
     }
     public void verifyEmployeeDetails(String employeeName) {
 
-        WebElement header = wait.until(ExpectedConditions.visibilityOf(nameHeader));
-        String displayedName = header.getText();
+//        WebElement header = wait.until(ExpectedConditions.visibilityOf(nameHeader));
+        String displayedName = nameHeader.getText();
 
         System.out.println("Displayed Employee Name: " + displayedName);
 
@@ -120,6 +156,47 @@ public class EmployeePage extends PageObject {
             throw new AssertionError("Invalid employee with name " + employeeName + " should not be listed.");
         }
     }
+
+// for checl login details for new user
+
+        public void toggleCreateLoginDetails() {
+            checkboxLabel.click();
+        }
+
+        public void enterLoginDetails(String username, String password) {
+            wait.until(ExpectedConditions.visibilityOf(usernameField)).sendKeys(username);
+            passwordField.sendKeys(password);
+            confirmPasswordField.sendKeys(password);
+        }
+
+    public void selectEnabledRadioButton() {
+        if (!enabledRadioButton.isSelected()) {
+            enabledRadioButton.click();
+        }
+    }
+
+
+    public void logout() {
+        userDropdown.click();
+        logoutLink.click();
+
+        wait.until(ExpectedConditions.urlToBe("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"));
+    }
+
+
+//        public void loginWithCredentials(String username, String password) {
+//            wait.until(ExpectedConditions.visibilityOf(loginUsernameField)).sendKeys(username);
+//            loginPasswordField.sendKeys(password);
+//            loginButton.click();
+//        }
+//
+//        public void verifySuccessfulLogin() {
+//            boolean isDisplayed = wait.until(ExpectedConditions.visibilityOf(welcomeMessage)).isDisplayed();
+//            if (!isDisplayed) {
+//                throw new AssertionError("Login was not successful.");
+//            }
+//        }
+
 
 
 

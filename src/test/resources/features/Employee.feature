@@ -26,3 +26,20 @@ Feature: Employee Management
       | First Name | Last Name | Full Name |
       | 1111       | 2222      | 1111 2222 |
 
+
+  Scenario Outline: Add a new employee with login details successfully
+    Given user navigates to the Add Employee page
+    When user enters valid employee details "<First Name>" and "<Last Name>"
+    And user toggles create login details
+    And user enters login details "<Username>" and "<Password>"
+    And user toggles status Enabled
+    And user saves the new employee
+    Then user should see the employee "<Full Name>" in the employee list
+    When user logs out
+    When user enters "<Username>" as username
+    And user enters "<Password>" as password
+    Then user should be able to login
+
+    Examples:
+      | First Name | Last Name    | Full Name           | Username  | Password |
+      | John       | Doe          | John Doe           | john.doe43xzsad  | Password123 |

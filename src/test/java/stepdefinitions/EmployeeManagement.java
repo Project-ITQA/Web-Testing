@@ -57,4 +57,34 @@ public class EmployeeManagement {
         employeeSteps.verifyInvalidEmployeeNotInList(fullName);
     }
 
+    @And("user toggles create login details")
+    public void userTogglesCreateLoginDetails() {
+        employeeSteps.toggleCreateLoginDetails();
+    }
+
+    @And("user enters login details {string} and {string}")
+    public void userEntersLoginDetails(String username, String password) {
+        employeeSteps.enterLoginDetails(username, password);
+    }
+    @And("user toggles status Enabled")
+    public void userTogglesStatusEnabled() {
+        employeeSteps.selectEnabledRadioButton();
+    }
+    @When("user logs out")
+    public void userLogsOut() {
+        employeeSteps.logout();
+    }
+
+//    @When("user logs in with username {string} and password {string}")
+//    public void userLogsInWithCredentials(String username, String password) {
+//        employeeSteps.loginWithCredentials(username, password);
+//    }
+//
+//    @Then("user should be logged in successfully")
+//    public void userShouldBeLoggedInSuccessfully() {
+//        employeeSteps.verifySuccessfulLogin();
+//    }
+
+
+
 }

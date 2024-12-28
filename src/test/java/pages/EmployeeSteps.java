@@ -48,4 +48,34 @@ public class EmployeeSteps extends AuthenticatedBaseTest{
         employeePage.verifyEmployeeNotInList(employeeName);
     }
 
+    @Step
+    public void toggleCreateLoginDetails() {
+        employeePage.toggleCreateLoginDetails();
+    }
+
+    @Step
+    public void enterLoginDetails(String username, String password) {
+        employeePage.enterLoginDetails(username, password);
+    }
+    @Step
+    public void selectEnabledRadioButton() {
+        employeePage.selectEnabledRadioButton();
+    }
+
+    @Step
+    public void logout() {
+        employeePage.logout();
+    }
+
+//    @Step
+//    public void loginWithCredentials(String username, String password) {
+//        employeePage.loginWithCredentials(username, password);
+//    }
+//
+//    @Step
+//    public void verifySuccessfulLogin() {
+//        employeePage.verifySuccessfulLogin();
+//    }
+
+
 }
