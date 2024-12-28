@@ -64,4 +64,16 @@ public class AddCandidateStepDefinitions {
     public void user_can_see_candidate(String firstName, String lastName) {
         viewCandidatePageStepLibrary.checkForCandidateName(firstName,lastName);
     }
+
+    @And("User fills the first name {string} and last name {string}")
+    public void user_fill_first_last_name_fields(String first_name, String last_name) {
+        addCandidatesPageStepLibrary.fillFirstName(first_name);
+        addCandidatesPageStepLibrary.fillLastName(last_name);
+        TestUtils.addDelay(3000);
+    }
+
+    @Then("User can see the required message under the email field")
+    public void user_can_see_the_required_message_under_the_email_field() {
+        addCandidatesPageStepLibrary.verifyEmailRequiredMessage();
+    }
 }
