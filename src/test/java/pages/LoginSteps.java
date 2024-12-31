@@ -17,13 +17,14 @@ LoginPage homepage;
     @Step
     public void EnterUserName(String username)
     {
-homepage.enterusername();
+
+        homepage.enterusername(username);
     }
 
     @Step
     public void EnterPasword(String password)
     {
-homepage.enteruserpw();
+homepage.enteruserpw(password);
     }
 
     @Step

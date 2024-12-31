@@ -9,8 +9,8 @@ public class AuthenticatedBaseTest  {
     @Step
     public void loginAsAdmin() {
         LoginPage.open();
-        LoginPage.enterusername();
-        LoginPage.enteruserpw();
+        LoginPage.enterusername("Admin");
+        LoginPage.enteruserpw("admin123");
         LoginPage.clickLogin();
     }
 }

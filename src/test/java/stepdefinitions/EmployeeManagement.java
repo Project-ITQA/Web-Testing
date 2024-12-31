@@ -5,11 +5,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
+import pages.DashboardSteps;
 import pages.EmployeeSteps;
 
 public class EmployeeManagement {
     @Steps
     EmployeeSteps employeeSteps;
+
+    @Steps
+    DashboardSteps dashboardSteps;
 
 
     @Given("user is logged in as an Admin")
@@ -74,6 +78,8 @@ public class EmployeeManagement {
     public void userLogsOut() {
         employeeSteps.logout();
     }
+
+
 
 //    @When("user logs in with username {string} and password {string}")
 //    public void userLogsInWithCredentials(String username, String password) {

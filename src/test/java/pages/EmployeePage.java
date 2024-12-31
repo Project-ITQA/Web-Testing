@@ -44,9 +44,11 @@ public class EmployeePage extends PageObject {
 
 //    @FindBy(xpath = "//h6[text()='Yukthi Hettiarachchi']")
 
-    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[1]/div[1]/div[1]/h6[text()]")
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[1]/div[1]/div[1]/h6")
     private WebElement nameHeader;
 
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[1]/div[1]")
+    private WebElement profHeader;
 
 
     @FindBy(xpath = "//input[@type='checkbox' and @wfd-id='id6']")
@@ -113,6 +115,7 @@ public class EmployeePage extends PageObject {
 
     public void redirectToViewPersonalDetails() {
         boolean isRedirected = wait.until(ExpectedConditions.urlContains("pim/viewPersonalDetails/empNumber"));
+        TestUtils.addDelay(4000);
 
         if (!isRedirected) {
             throw new AssertionError("Page did not redirect to the expected URL after saving the employee.");
@@ -121,7 +124,7 @@ public class EmployeePage extends PageObject {
     }
     public void verifyEmployeeDetails(String employeeName) {
 
-//        WebElement header = wait.until(ExpectedConditions.visibilityOf(nameHeader));
+        wait.until(ExpectedConditions.visibilityOf(profHeader));
         String displayedName = nameHeader.getText();
 
         System.out.println("Displayed Employee Name: " + displayedName);

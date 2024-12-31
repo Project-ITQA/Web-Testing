@@ -42,4 +42,4 @@ Feature: Employee Management
 
     Examples:
       | First Name | Last Name    | Full Name           | Username  | Password |
-      | John       | Doe          | John Doe           | john.doe43xzsad  | Password123 |
+      | John       | Doe          | John Doe           | johdzxcsn.doe4fs3xzsad  | Password123 |

@@ -22,13 +22,12 @@ public class LoginPage extends PageObject {
     private WebElementFacade loginButton;
 
 
-
-    public void enterusername() {
-        username.sendKeys("Admin");
+    public void enterusername(String usernamevalue) {
+        username.sendKeys(usernamevalue);
     }
 
-    public void enteruserpw() {
-        password.sendKeys("admin123");
+    public void enteruserpw(String passwordvalue) {
+        password.sendKeys(passwordvalue);
     }
 
     public void clickLogin() {
