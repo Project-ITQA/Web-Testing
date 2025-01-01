@@ -6,24 +6,32 @@ Feature: Submit a New Claim
     And user enters "admin123" as password
     Then user should be able to login
 
-  Scenario: Submit a new claim with all mandatory fields filled
+  Scenario Outline: Submit a new claim with all mandatory fields filled
     Given the user is on the Claims Page
     When the user clicks the Submit Claim button
     And the user is navigated to the Submit Claim page
-    And the user selects the Event "Accommodation"
-    And the user selects the Currency "Sri Lanka Rupee"
-    And the user enters Remarks "Hotel Stay"
+    And the user selects the Event "<Event>"
+    And the user selects the Currency "<Currency>"
+    And the user enters Remarks "<Remarks>"
     And the user clicks the Create button
     Then the user is directed to the View Claim page
-    And the user should see the claim details Event "Accommodation" and Currency "Sri Lanka Rupee" and Remarks "Hotel Stay"
+    And the user should see the claim details Event "<Event>" and Currency "<Currency>" and Remarks "<Remarks>"
 
-  Scenario: Submit a new claim without filling mandatory fields
+    Examples:
+      | Event                 | Currency             | Remarks        |
+      | Accommodation         | Sri Lanka Rupee      | Hotel Stay     |
+      | Medical Reimbursement | United States Dollar | Hospital Bill  |
+
+  Scenario Outline: Submit a new claim without filling mandatory fields
     Given the user is on the Claims Page
     When the user clicks the Submit Claim button
     And the user is navigated to the Submit Claim page
-    And the user selects the Event "Accommodation"
-    And the user enters Remarks "Hotel Stay"
+    And the user selects the Event "<Event>"
+    And the user enters Remarks "<Remarks>"
     And the user clicks the Create button
     Then User can see the required message under the currency field
 
-
+    Examples:
+      | Event                 | Remarks          |
+      | Accommodation         | Hotel Stay       |
+      | Medical Reimbursement | Hospital Visit   |
