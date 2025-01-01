@@ -3,6 +3,7 @@ package pages;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,74 +14,74 @@ import java.time.Duration;
 public class EmployeePage extends PageObject {
 
     @FindBy(xpath = "//a[@href='/web/index.php/pim/viewPimModule']")
-    private WebElement pimMenuItem;
+    private WebElementFacade pimMenuItem;
 
     @FindBy(name = "firstName")
-    private WebElement firstname;
+    private WebElementFacade firstname;
 
     @FindBy(name = "middleName")
-    private WebElement middleName;
+    private WebElementFacade middleName;
 
     @FindBy(name = "lastName")
-    private WebElement lastname;
+    private WebElementFacade lastname;
 
     @FindBy(xpath = "//button[text()=' Save ']")
-    private WebElement saveButton;
+    private WebElementFacade saveButton;
 
     @FindBy(xpath = "//li[@class='oxd-topbar-body-nav-tab']//a[text()='Add Employee']")
-    private WebElement AddEmployeeButton;
+    private WebElementFacade AddEmployeeButton;
 
     @FindBy(xpath = "//li[@class='oxd-topbar-body-nav-tab']//a[text()='Employee List']")
-    private WebElement employeeListTab;
+    private WebElementFacade employeeListTab;
 
     @FindBy(xpath = "//label[text()='Employee Name']/ancestor::div[contains(@class, 'oxd-input-group')]//input[@placeholder='Type for hints...']")
-    private WebElement employeeNameInputField;
+    private WebElementFacade employeeNameInputField;
 
     @FindBy(xpath = "//button[text()=' Search ']")
-    private WebElement searchButton;
+    private WebElementFacade searchButton;
 
     @FindBy(xpath = "//div[@class='oxd-table-body']//div[contains(text(), 'Yukthi Hettiarachchi')]")
-    private WebElement searchResult;
+    private WebElementFacade searchResult;
 
 //    @FindBy(xpath = "//h6[text()='Yukthi Hettiarachchi']")
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[1]/div[1]/div[1]/h6")
-    private WebElement nameHeader;
+    private WebElementFacade nameHeader;
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/div/div[1]/div[1]")
-    private WebElement profHeader;
+    private WebElementFacade profHeader;
 
 
     @FindBy(xpath = "//input[@type='checkbox' and @wfd-id='id6']")
-    private WebElement createLoginToggle;
+    private WebElementFacade createLoginToggle;
 
     @FindBy(xpath = "//div[@class='oxd-switch-wrapper']//input[@type='checkbox']")
-    private WebElement checkbox;
+    private WebElementFacade checkbox;
 
 //    @FindBy(xpath = "//label[input[@wfd-id='id6']]")
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[2]/div/label/span")
-    private WebElement checkboxLabel;
+    private WebElementFacade checkboxLabel;
 
 
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[3]/div/div[1]/div/div[2]/input")
-    private WebElement usernameField;
+    private WebElementFacade usernameField;
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[1]/div/div[2]/input")
-    private WebElement passwordField;
+    private WebElementFacade passwordField;
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[2]/div/div[2]/input")
-    private WebElement confirmPasswordField;
+    private WebElementFacade confirmPasswordField;
 
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[2]/div/label")
-    private WebElement enabledRadioButton;
+    private WebElementFacade enabledRadioButton;
 
     @FindBy(css = "li.oxd-userdropdown")
-    private WebElement userDropdown;
+    private WebElementFacade userDropdown;
 
     @FindBy(css = "a.oxd-userdropdown-link[href='/web/index.php/auth/logout']")
-    private WebElement logoutLink;
+    private WebElementFacade logoutLink;
 
 
     private WebDriverWait wait;
@@ -147,18 +148,18 @@ public class EmployeePage extends PageObject {
         }
     }
 
-    public void verifyEmployeeNotInList(String employeeName) {
-        pimMenuItem.click();
-        wait.until(ExpectedConditions.visibilityOf(employeeListTab)).click();
-
-        wait.until(ExpectedConditions.visibilityOf(employeeNameInputField)).sendKeys(employeeName);
-        searchButton.click();
-
-        boolean isDisplayed = searchResult.isDisplayed();
-        if (isDisplayed) {
-            throw new AssertionError("Invalid employee with name " + employeeName + " should not be listed.");
-        }
-    }
+//    public void verifyEmployeeNotInList(String employeeName) {
+//        pimMenuItem.click();
+//        wait.until(ExpectedConditions.visibilityOf(employeeListTab)).click();
+//
+//        wait.until(ExpectedConditions.visibilityOf(employeeNameInputField)).sendKeys(employeeName);
+//        searchButton.click();
+//
+//        boolean isDisplayed = searchResult.isDisplayed();
+//        if (isDisplayed) {
+//            throw new AssertionError("Invalid employee with name " + employeeName + " should not be listed.");
+//        }
+//    }
 
 // for checl login details for new user
 

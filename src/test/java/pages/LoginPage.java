@@ -13,10 +13,10 @@ public class LoginPage extends PageObject {
 
 
     @FindBy(name = "username")
-    private WebElement username;
+    private WebElementFacade username;
 
     @FindBy(name = "password")
-    private WebElement password;
+    private WebElementFacade password;
 
     @FindBy(xpath = "//button[contains(@class, 'oxd-button--main')]")
     private WebElementFacade loginButton;

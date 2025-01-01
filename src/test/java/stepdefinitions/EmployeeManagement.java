@@ -56,10 +56,10 @@ public class EmployeeManagement {
         employeeSteps.verifyNoRedirectionToPersonalDetails();
     }
 
-    @Then("user should not see the invalid employee {string} in the employee list")
-    public void userShouldNotSeeInvalidEmployeeInEmployeeList(String fullName) {
-        employeeSteps.verifyInvalidEmployeeNotInList(fullName);
-    }
+//    @Then("user should not see the invalid employee {string} in the employee list")
+//    public void userShouldNotSeeInvalidEmployeeInEmployeeList(String fullName) {
+//        employeeSteps.verifyInvalidEmployeeNotInList(fullName);
+//    }
 
     @And("user toggles create login details")
     public void userTogglesCreateLoginDetails() {

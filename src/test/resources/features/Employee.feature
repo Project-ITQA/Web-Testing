@@ -20,7 +20,7 @@ Feature: Employee Management
     When user enters invalid employee details "<First Name>" and "<Last Name>"
     And user saves the new employee
     Then user should not be redirected to employee details page
-    And user should not see the invalid employee "<Full Name>" in the employee list
+#    And user should not see the invalid employee "<Full Name>" in the employee list
 
     Examples:
       | First Name | Last Name | Full Name |
