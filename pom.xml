@@ -9,7 +9,7 @@
 
     <packaging>jar</packaging>
 
-    <name>Web Testing using Serenity BDD with Cucumber</name>
+    <name>Web Testing of OrangeHRM using Serenity BDD with Cucumber</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -83,12 +83,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.5.15</version>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.23.1</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
     <build>
