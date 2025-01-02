@@ -27,7 +27,7 @@ public class UserPageAddStepLibrary {
 
     @Step("Filling password as {0}")
     public void fillPassword(String password) {
-        userPageAdd.fillUsername(password);
+        userPageAdd.fillPassword(password);
     }
 
     @Step("Filling confirm password as {0}")
@@ -44,5 +44,10 @@ public class UserPageAddStepLibrary {
     @Step("Click submit button")
     public void clickSubmitButton() {
         userPageAdd.clickSubmitButton();
+    }
+
+    @Step
+    public void verifyRequiredMessage(){
+        userPageAdd.verifyRequiredMessage();
     }
 }

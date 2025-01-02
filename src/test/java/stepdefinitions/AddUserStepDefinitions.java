@@ -44,6 +44,21 @@ public class AddUserStepDefinitions {
         TestUtils.addDelay(3000);
     }
 
+    @And("User fills the user role {string} and status {string} and username {string} and password {string} and confirm password as {string}")
+    public void user_does_not_fill_mandatory_fields(String user_role, String status, String username, String password, String confirm_password) {
+        addUserPage.fillUserRole(user_role);
+        addUserPage.fillStatus(status);
+        addUserPage.fillUsername(username);
+        addUserPage.fillPassword(password);
+        addUserPage.fillConfirmPassword(confirm_password);
+        TestUtils.addDelay(3000);
+    }
+
+    @Then("User is getting the error under the employee Name field")
+    public void User_is_getting_the_error_under_the_employee_Name_field(){
+        addUserPage.verifyRequiredMessage();
+    }
+
     @When("User clicks the submit button")
     public void user_clicks_the_submit_button() {
         addUserPage.clickSubmitButton();
@@ -53,13 +68,14 @@ public class AddUserStepDefinitions {
     @Then("User is directed to the view user page")
     public void user_is_directed_to_the_view_user_page() {
         TestUtils.addDelay(3000);
-        addUserPage.verifyCurrentPage();
+        userPage.verifyCurrentPage();
 
     }
-
     @Then("User can see user {string}")
     public void user_can_see_user(String username) {
+        TestUtils.addDelay(3000);
         userPage.checkUsername(username);
     }
+
 
 }

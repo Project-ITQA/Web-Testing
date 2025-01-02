@@ -24,4 +24,15 @@ public class UserManagementPageStepLibrary {
     public void checkUsername(String username){
          userManagementPage.checkUsername(username);
     }
+
+    @Step
+    public void typeIntoSearchBox(String text) {
+        userManagementPage.typeIntoSearchBox(text);
+    }
+    @Step
+    public void clickSearchButton() {
+        userManagementPage.clickSearchButton();
+    }
+
+
 }

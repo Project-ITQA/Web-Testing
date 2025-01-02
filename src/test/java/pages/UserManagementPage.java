@@ -1,6 +1,7 @@
 package pages;
 
 import net.serenitybdd.annotations.DefaultUrl;
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
@@ -19,8 +20,12 @@ public class UserManagementPage extends PageObject {
     @FindBy(css = "button[type=submit]")
     private WebElementFacade userSearchButton;
 
-    @FindBy(xpath ="//span[contains(@class, 'oxd-text') and contains(text(), 'Records Found')]")
+    @FindBy(xpath ="//div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']//span[contains(@class, 'oxd-text')]")
     private WebElementFacade searchResultPhrase;
+
+    @FindBy(xpath = "//button[contains(@class, 'oxd-button--secondary') and text()=' Search ']")
+    private WebElementFacade searchButton;
+
 
     public void clickAddUserButton (){
         addUserButton.click();
@@ -37,8 +42,19 @@ public class UserManagementPage extends PageObject {
     public void checkUsername(String username){
      usernameField.sendKeys(username);
      userSearchButton.click();
-        TestUtils.addDelay(3000);
+        searchResultPhrase.waitUntilVisible();
      Assert.assertTrue(searchResultPhrase.containsText("(1)"));
 
     }
+
+    public void typeIntoSearchBox(String text) {
+        usernameField.waitUntilVisible();
+        usernameField.sendKeys(text);
+    }
+
+    public void clickSearchButton(){
+        searchButton.waitUntilVisible();
+        searchButton.click();
+    }
+
 }
