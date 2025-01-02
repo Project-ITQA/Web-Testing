@@ -1,16 +1,16 @@
-package stepdefinitions;
+package tests;
 
 import io.cucumber.java.en.*;
 import net.serenitybdd.annotations.Steps;
-import pages.Dashboard;
-import pages.Homepage;
+import steps.DashboardSteps;
+import steps.HomepageSteps;
 
 public class LoginToApplication {
     @Steps
-    Homepage home;
+    HomepageSteps home;
 
     @Steps
-    Dashboard dash;
+    DashboardSteps dash;
 
     @Given("user is on home page")
     public void userIsOnHomePage() {
