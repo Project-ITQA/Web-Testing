@@ -84,7 +84,6 @@ public class OrangeHrmClaimsPage extends PageObject {
         }
         //Get the row text
         String rowText = rows.getFirst().getText().toLowerCase();
-        System.out.println(rowText);
         //Check if the row text contains the event, currency and remarks
         Assert.assertTrue(rowText.contains(event.toLowerCase()) && rowText.contains(currency.toLowerCase()) && rowText.contains(remarks.toLowerCase()));
     }
