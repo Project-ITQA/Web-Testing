@@ -33,6 +33,19 @@ public class UserManagementPageStepLibrary {
     public void clickSearchButton() {
         userManagementPage.clickSearchButton();
     }
+    @Step
+    public void clickDeleteButton(String username) {
+        userManagementPage.clickDeleteButton(username);
+    }
 
+    @Step
+    public void clickConfirmDeleteButton() {
+        userManagementPage.clickConfirmDeleteButton();
+    }
+
+    @Step
+    public void verifyUserRowNonAvailability(String username) {
+        userManagementPage.verifyUserRowNonAvailability(username);
+    }
 
 }

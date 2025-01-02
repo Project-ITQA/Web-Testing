@@ -26,6 +26,11 @@ public class UserManagementPage extends PageObject {
     @FindBy(xpath = "//button[contains(@class, 'oxd-button--secondary') and text()=' Search ']")
     private WebElementFacade searchButton;
 
+    @FindBy(xpath = "//button[contains(@class, 'oxd-icon-button') and i[contains(@class, 'bi-trash')]]")
+    private WebElementFacade deleteButton;
+
+    @FindBy(xpath = "//button[contains(@class, 'oxd-button--label-danger') and text()=' Yes, Delete ']")
+    private WebElementFacade confirmDeleteButton;
 
     public void clickAddUserButton (){
         addUserButton.click();
@@ -57,4 +62,21 @@ public class UserManagementPage extends PageObject {
         searchButton.click();
     }
 
+    public void clickDeleteButton(String username){
+        usernameField.sendKeys(username);
+        deleteButton.click();
+    }
+
+    public void clickConfirmDeleteButton(){
+        TestUtils.addDelay(5000);
+        confirmDeleteButton.waitUntilVisible();
+        confirmDeleteButton.click();
+    }
+
+    public void verifyUserRowNonAvailability(String text){
+        TestUtils.addDelay(5000);
+        usernameField.waitUntilVisible();
+        usernameField.sendKeys(text);
+
+    }
 }
