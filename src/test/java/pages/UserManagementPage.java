@@ -20,7 +20,7 @@ public class UserManagementPage extends PageObject {
     @FindBy(css = "button[type=submit]")
     private WebElementFacade userSearchButton;
 
-    @FindBy(xpath ="//div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']//span[contains(@class, 'oxd-text')]")
+    @FindBy(xpath = "//div[@class='orangehrm-horizontal-padding orangehrm-vertical-padding']//span[contains(@class, 'oxd-text')]")
     private WebElementFacade searchResultPhrase;
 
     @FindBy(xpath = "//button[contains(@class, 'oxd-button--secondary') and text()=' Search ']")
@@ -32,23 +32,30 @@ public class UserManagementPage extends PageObject {
     @FindBy(xpath = "//button[contains(@class, 'oxd-button--label-danger') and text()=' Yes, Delete ']")
     private WebElementFacade confirmDeleteButton;
 
-    public void clickAddUserButton (){
+    public void clickAddUserButton() {
         addUserButton.click();
     }
 
-    public void verifyCurrentPage()
-    {
+    public void verifyCurrentPage() {
         String currentURL = (getDriver().getCurrentUrl());
         System.out.println(currentURL);
         assert currentURL != null;
         Assert.assertTrue(currentURL.contains("admin/viewSystemUsers"));
     }
 
-    public void checkUsername(String username){
-     usernameField.sendKeys(username);
-     userSearchButton.click();
+    public void checkUsername(String username) {
+        usernameField.type(username);
+        userSearchButton.click();
         searchResultPhrase.waitUntilVisible();
-     Assert.assertTrue(searchResultPhrase.containsText("(1)"));
+        Assert.assertTrue(searchResultPhrase.containsText("(1)"));
+
+    }
+
+    public void checkUsernameNotAvailable(String username) {
+        usernameField.type(username);
+        userSearchButton.click();
+        searchResultPhrase.waitUntilVisible();
+        Assert.assertTrue(searchResultPhrase.containsText("No"));
 
     }
 
@@ -57,26 +64,20 @@ public class UserManagementPage extends PageObject {
         usernameField.sendKeys(text);
     }
 
-    public void clickSearchButton(){
+    public void clickSearchButton() {
         searchButton.waitUntilVisible();
         searchButton.click();
     }
 
-    public void clickDeleteButton(String username){
+    public void clickDeleteButton(String username) {
         usernameField.sendKeys(username);
         deleteButton.click();
     }
 
-    public void clickConfirmDeleteButton(){
+    public void clickConfirmDeleteButton() {
         TestUtils.addDelay(5000);
         confirmDeleteButton.waitUntilVisible();
         confirmDeleteButton.click();
     }
 
-    public void verifyUserRowNonAvailability(String text){
-        TestUtils.addDelay(5000);
-        usernameField.waitUntilVisible();
-        usernameField.sendKeys(text);
-
-    }
 }

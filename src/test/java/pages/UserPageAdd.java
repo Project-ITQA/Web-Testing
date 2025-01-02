@@ -41,7 +41,7 @@ public class UserPageAdd extends PageObject {
     @FindBy(xpath = "//span[contains(@class, 'oxd-input-field-error-message') and text()='Required']")
     private WebElementFacade requiredMessage;
 
-    @FindBy
+    @FindBy(xpath="//span[contains(@class, 'oxd-input-field-error-message') and text()='Passwords do not match']")
     private WebElementFacade passwordDoNotMatchMessage;
 
     public void fillUserRole(String userRole) {

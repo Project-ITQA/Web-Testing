@@ -44,8 +44,8 @@ public class UserManagementPageStepLibrary {
     }
 
     @Step
-    public void verifyUserRowNonAvailability(String username) {
-        userManagementPage.verifyUserRowNonAvailability(username);
+    public void checkUsernameNotAvailable(String username) {
+        userManagementPage.checkUsernameNotAvailable(username);
     }
 
 }
