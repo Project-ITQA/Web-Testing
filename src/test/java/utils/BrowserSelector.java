@@ -1,49 +1,52 @@
 package utils;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class BrowserSelector {
 
     public static String getDefaultBrowser() {
-        String browser = checkForBrowser("msedge", "where /r \"C:\\Program Files (x86)\" msedge.exe"); // Check for Microsoft Edge
-        if (browser != null) {
-            System.out.println("Microsoft Edge is available.");
-            return browser;
-        }
+        String browser = checkForBrowser("Microsoft Edge", "where /r \"C:\\Program Files (x86)\" msedge.exe");
+        if (browser != null) return browser;
 
-        browser = checkForBrowser("chrome", "where /r \"C:\\Program Files\" chrome.exe"); // Fallback to Chrome
-        if (browser != null) {
-            System.out.println("Google Chrome is available.");
-            return browser;
-        }
+        browser = checkForBrowser("Google Chrome (64-bit)", "where /r \"C:\\Program Files\" chrome.exe");
+        if (browser != null) return browser;
 
         System.out.println("No supported browser found.");
         return null;
     }
 
-
-
     private static String checkForBrowser(String browserName, String command) {
         try {
             String[] commandParts = command.split(" ");
             ProcessBuilder processBuilder = new ProcessBuilder(commandParts);
-
             processBuilder.redirectErrorStream(true);
 
             Process process = processBuilder.start();
 
-            if (process.waitFor() == 0) {
-                System.out.printf("%s is available.%n", browserName);
-                return browserName;
-            } else {
-                System.out.printf("%s is not available. Command exited with non-zero status.%n", browserName);
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+                StringBuilder output = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    output.append(line).append(System.lineSeparator());
+                }
+
+                if (process.waitFor() == 0 && !output.toString().isBlank()) {
+                    System.out.printf("%s is available. Command output: %s%n", browserName, output.toString().trim());
+                    return browserName;
+                } else {
+                    System.out.printf("%s is not available. Command exited with non-zero status.%n", browserName);
+                }
             }
-        } catch (IOException | InterruptedException e) {
-            System.err.printf("Error checking for %s: %s%n", browserName, e.getMessage());
+        } catch (IOException e) {
+            System.err.printf("IOException while checking for %s: %s%n", browserName, e.getMessage());
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.err.printf("Interrupted while checking for %s: %s%n", browserName, e.getMessage());
         }
         return null;
     }
-
 
     public static void main(String[] args) {
         String defaultBrowser = getDefaultBrowser();
