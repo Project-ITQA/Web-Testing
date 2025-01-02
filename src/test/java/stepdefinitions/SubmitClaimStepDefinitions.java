@@ -60,4 +60,9 @@ public class SubmitClaimStepDefinitions {
     public void the_user_should_see_the_claim_status_as(String string) {
         viewClaimPageStepLibrary.verifyClaimStatus(string);
     }
+
+    @Then("the user should see a required message under the Expenses field")
+    public void theUserShouldSeeARequiredMessageUnderTheExpensesField() {
+        viewClaimPageStepLibrary.verifyExpenseFieldRequiredMessage();
+    }
 }

@@ -36,3 +36,8 @@ Feature: Submit a Claim
       | Planned Surgery   | 100    | 2025-02-01 | Meal  |
       | Transport         | 200    | 2024-01-02 | Taxi  |
       | Accommodation     | 300    | 2023-12-03 | Hotel |
+
+    Scenario: Submit a claim without adding expenses
+      Given the user is directed to the View Claim page
+      When the user clicks the Submit button
+      Then the user should see a required message under the Expenses field

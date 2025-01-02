@@ -119,4 +119,18 @@ public class OrangeHrmViewClaimPage extends PageObject {
         TestUtils.addDelay(5000);
         Assert.assertEquals(status, statusField.getDomProperty("_value"));
     }
+
+    public void verifyRequiredMessage() {
+        // Find all matching elements
+        List<WebElementFacade> requiredMessages = findAll(By.xpath("//h6[text()='Expenses']/following::span[contains(@class, 'oxd-input-field-error-message')]"));
+
+        // Check if the element is present
+        if (requiredMessages.isEmpty()) {
+            Assert.fail("The claim was submitted without adding expenses, and the required message is missing.");
+        } else {
+            // Check if the element is displayed
+            Assert.assertTrue("Required message is not displayed.", requiredMessages.get(0).isDisplayed());
+        }
+    }
+
 }

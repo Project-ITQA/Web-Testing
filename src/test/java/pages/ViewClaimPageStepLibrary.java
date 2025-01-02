@@ -66,5 +66,9 @@ public class ViewClaimPageStepLibrary {
         viewClaimPage.verifyClaimStatus(status);
     }
 
+    @Step
+    public void verifyExpenseFieldRequiredMessage(){
+        viewClaimPage.verifyRequiredMessage();
+    }
 
 }
