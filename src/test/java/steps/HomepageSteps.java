@@ -18,7 +18,7 @@ LoginPage homepage;
     @Step("Entering username as {0}")
     public void EnterUserName(String username)
     {
-homepage.enterusername();
+        homepage.enterusername();
     }
 
     @Step("Entering password as {0}")
