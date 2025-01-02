@@ -1,4 +1,4 @@
-Feature: Submit a New Claim
+Feature: Create a New Claim
 
   Background:
     Given user is on home page
@@ -6,7 +6,7 @@ Feature: Submit a New Claim
     And user enters "admin123" as password
     Then user should be able to login
 
-  Scenario Outline: Submit a new claim with all mandatory fields filled
+  Scenario Outline: Create a new claim with all mandatory fields filled
     Given the user is on the Claims Page
     When the user clicks the Submit Claim button
     And the user is navigated to the Submit Claim page
@@ -22,7 +22,7 @@ Feature: Submit a New Claim
       | Accommodation         | Sri Lanka Rupee      | Hotel Stay     |
       | Medical Reimbursement | United States Dollar | Hospital Bill  |
 
-  Scenario Outline: Submit a new claim without filling mandatory fields
+  Scenario Outline: Create a new claim without filling mandatory fields
     Given the user is on the Claims Page
     When the user clicks the Submit Claim button
     And the user is navigated to the Submit Claim page

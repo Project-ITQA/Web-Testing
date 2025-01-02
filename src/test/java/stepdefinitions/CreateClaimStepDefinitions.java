@@ -8,7 +8,7 @@ import pages.ClaimsPageStepLibrary;
 import pages.SubmitClaimPageStepLibrary;
 import pages.ViewClaimPageStepLibrary;
 
-public class SubmitClaimStepDefinitions {
+public class CreateClaimStepDefinitions {
 
     @Steps
     ClaimsPageStepLibrary claimsPageStepLibrary ;
