@@ -42,6 +42,10 @@ public class JobListPageSteps {
         TestUtils.addDelay(3000);
         jobListPage.clickConfirmDeleteButton();
     }
+    @Step
+    public void clickEditButton(String title) {
+        jobListPage.clickEditButton(title);
+    }
 
     @Step
     public void verifyJobRowNonAvailability(String title) {

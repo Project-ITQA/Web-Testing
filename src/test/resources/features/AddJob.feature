@@ -14,4 +14,3 @@ Feature: Add Job
     And User clicks the submit button
     Then User is directed to the Job List View page
     And User can see the job "Senior Manager - Delivery" listed
-

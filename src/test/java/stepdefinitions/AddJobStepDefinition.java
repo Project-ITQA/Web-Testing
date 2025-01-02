@@ -44,7 +44,7 @@ public class AddJobStepDefinition {
         TestUtils.addDelay(3000);
     }
 
-    @Then("User is directed to the Job List View page")
+    @Then("User is directed to the  Job List View page")
     public void userIsDirectedToTheJobListViewPage() {
         TestUtils.addDelay(3000);
         jobListPageSteps.verifyJoblistPage();

@@ -44,12 +44,29 @@ public class OrangeHrmJobListPage extends PageObject {
         return null;
     }
 
+    private WebElementFacade getJobEditButton(String title) {
+        WebElementFacade row = getJobTitleRow(title);
+        if (row != null) {
+            return row.find(By.xpath("//i[@class='oxd-icon bi-pencil-fill']"));
+        }
+        return null;
+    }
+
     public void clickDeleteButton(String title) {
         WebElementFacade deleteButton = getJobDeleteButton(title);
         if (deleteButton != null) {
             deleteButton.click();
         } else {
             Assert.fail("Could not find delete button for title: ");
+        }
+    }
+
+    public void clickEditButton(String title) {
+        WebElementFacade editButton = getJobEditButton(title);
+        if (editButton != null) {
+            editButton.click();
+        }else {
+            Assert.fail("Could not find edit button for title: ");
         }
     }
 
