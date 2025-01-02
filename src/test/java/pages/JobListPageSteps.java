@@ -1,6 +1,7 @@
 package pages;
 
 import net.serenitybdd.annotations.Step;
+import utils.TestUtils;
 
 public class JobListPageSteps {
 
@@ -10,6 +11,7 @@ public class JobListPageSteps {
     public void openJobListPage() {
         jobListPage.open();
     }
+
     @Step
     public void clickAddJobButton() {
         jobListPage.clickAddJobButton();
@@ -23,6 +25,27 @@ public class JobListPageSteps {
     @Step
     public void verifyJobTittleAdded(String jobTitle) {
         jobListPage.verifyJobTitle(jobTitle);
+    }
+
+    @Step
+    public void verifyJobRowAvailability(String title) {
+        jobListPage.verifyJobTitle(title);
+    }
+
+    @Step
+    public void clickDeleteButton(String title) {
+        jobListPage.clickDeleteButton(title);
+    }
+
+    @Step
+    public void clickConfirmDeleteButton() {
+        TestUtils.addDelay(3000);
+        jobListPage.clickConfirmDeleteButton();
+    }
+
+    @Step
+    public void verifyJobRowNonAvailability(String title) {
+        jobListPage.verifyNotJobRow(title);
     }
 
 }
