@@ -50,4 +50,9 @@ public class UserPageAddStepLibrary {
     public void verifyRequiredMessage(){
         userPageAdd.verifyRequiredMessage();
     }
+
+    @Step
+    public void verifyPasswordDoNotMatchMessage(){
+        userPageAdd.verifyPasswordDoNotMatchMessage();
+    }
 }

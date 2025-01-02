@@ -41,6 +41,9 @@ public class UserPageAdd extends PageObject {
     @FindBy(xpath = "//span[contains(@class, 'oxd-input-field-error-message') and text()='Required']")
     private WebElementFacade requiredMessage;
 
+    @FindBy
+    private WebElementFacade passwordDoNotMatchMessage;
+
     public void fillUserRole(String userRole) {
         userRoleField.click();
         TestUtils.selectOptionFrom(currentVisibleOptions,userRole);
@@ -86,6 +89,15 @@ public class UserPageAdd extends PageObject {
             Assert.assertTrue(requiredMessage.isDisplayed());
         } catch (NoSuchElementException e) {
             Assert.fail("Employee Name required message is not shown");
+        }
+    }
+
+    public void verifyPasswordDoNotMatchMessage(){
+        try {
+            passwordDoNotMatchMessage.waitUntilVisible();
+            Assert.assertTrue(passwordDoNotMatchMessage.isDisplayed());
+        } catch (NoSuchElementException e) {
+            Assert.fail("Password do not match message is not shown");
         }
     }
 
