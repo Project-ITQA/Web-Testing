@@ -44,7 +44,7 @@ public class OrangeHrmClaimsPage extends PageObject {
         if (dropDownOption == null){
             Assert.fail("Event not found: " + option);
         }
-        dropDownOption.click();
+        dropDownOption.waitUntilVisible().click();
     }
 
     //Select ReferenceId
@@ -63,7 +63,7 @@ public class OrangeHrmClaimsPage extends PageObject {
             Assert.fail("Reference Id not found: " + referenceId);
         }
 
-        referenceOption.click();
+        referenceOption.waitUntilVisible().click();
     }
 
     public void clickSearchButton(){

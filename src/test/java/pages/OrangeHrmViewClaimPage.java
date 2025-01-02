@@ -72,7 +72,7 @@ public class OrangeHrmViewClaimPage extends PageObject {
         if (expenseTypeDropDownOption == null){
             Assert.fail("Expense Type not found: " + expenseType);
         }
-        expenseTypeDropDownOption.click();
+        expenseTypeDropDownOption.waitUntilVisible().click();
     }
 
     public void enterExpenseAmount(String amount){

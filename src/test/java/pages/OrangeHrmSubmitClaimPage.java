@@ -45,7 +45,7 @@ public class OrangeHrmSubmitClaimPage extends PageObject {
         if (eventOption == null){
             Assert.fail("Event not found: " + event);
         }
-        eventOption.click();
+        eventOption.waitUntilVisible().click();
     }
 
     public void selectCurrency(String currency){
