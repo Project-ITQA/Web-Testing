@@ -53,10 +53,12 @@ public class SubmitClaimStepDefinitions {
     public void the_user_clicks_the_create_button() {
         submitClaimPageStepLibrary.clickCreateButton();
     }
+
     @Then("the user is directed to the View Claim page")
     public void the_user_is_directed_to_the_view_claim_page() {
         viewClaimPageStepLibrary.verifyNavigateToViewClaimPage();
     }
+
     @Then("the user should see the claim details Event {string} and Currency {string} and Remarks {string}")
     public void the_user_should_see_the_claim_details_event_and_currency_and_remarks(String string, String string2, String string3) {
         viewClaimPageStepLibrary.verifyClaimDetails(string, string2, string3);

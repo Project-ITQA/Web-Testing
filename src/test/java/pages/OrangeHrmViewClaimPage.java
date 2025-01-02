@@ -1,5 +1,6 @@
 package pages;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -14,12 +15,17 @@ public class OrangeHrmViewClaimPage extends PageObject {
     private WebElementFacade currencyField;
 
     @FindBy(xpath = "//label[text()='Reference Id']/following::input[@class='oxd-input oxd-input--active' and @disabled]")
-    private WebElementFacade ReferenceIdField;
+    private WebElementFacade referenceIdField;
 
     @FindBy(xpath = "//label[text()='Remarks']/following::textarea[@class='oxd-textarea oxd-textarea--active oxd-textarea--resize-vertical' and @disabled]")
     private WebElementFacade remarksField;
 
     public void verifyViewClaimPage(){
+        //Get the referenceId
+        String referenceId = referenceIdField.getDomProperty("_value");
+        //Set the referenceId in the session
+        Serenity.setSessionVariable("referenceId").to(referenceId);
+
         String currentURL = getDriver().getCurrentUrl();
         Assert.assertTrue(currentURL.contains("id"));
     }
@@ -30,7 +36,4 @@ public class OrangeHrmViewClaimPage extends PageObject {
         Assert.assertEquals(remarks, remarksField.getDomProperty("_value"));
     }
 
-    public String getReferenceId(){
-        return ReferenceIdField.getDomProperty("_value");
-    }
 }
