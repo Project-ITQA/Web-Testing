@@ -16,11 +16,17 @@ Feature: Edit Job
     Then User is directed to the Job List View page
     Then User can see the job "Senior Manager - Finance" listed
 
-  Scenario: Edit the job title
-    Given User can see "Senior Manager - Finance" in  Edit JobList Table
-    When User clicks the Edit button of "Senior Manager - Finance"
+  Scenario Outline: Edit the job title
+
+    Given User can see "<jobTitle>" in  Edit JobList Table
+    When User clicks the Edit button of "<jobTitle>"
     And User is navigated to the Edit Job page
-    And User edits the  job title field to "CEO"
+    And User edits the  job title field to "<newJobTitle>"
     And  User clicks the Edit page Submit button
     Then User is directed to the Job List View page
-    And User can see Edited job "CEO" is listed
+    And User can see Edited job "<newJobTitle>" is listed
+
+    Examples:
+
+      | jobTitle                  | newJobTitle  |
+      | Senior Manager - Finance  | CEO          |
