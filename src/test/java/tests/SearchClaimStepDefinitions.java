@@ -1,12 +1,10 @@
-package stepdefinitions;
+package tests;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
 import pages.ClaimsPageStepLibrary;
-import pages.SubmitClaimPageStepLibrary;
 import pages.ViewClaimPageStepLibrary;
 
 public class SearchClaimStepDefinitions {
