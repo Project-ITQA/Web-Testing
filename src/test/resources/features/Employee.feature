@@ -11,7 +11,7 @@ Feature: Employee Management
 
     Examples:
       | First Name | Last Name    | Full Name           |  Emp ID |
-      | Yukthi     | Hettiarachchi | Yukthi Hettiarachchi | 8978x |
+      | Yukthi     | Hettiarachchi | Yukthi Hettiarachchi | 89z78cx |
 
 
   Scenario Outline: Prevent saving invalid employee names
@@ -22,7 +22,7 @@ Feature: Employee Management
 
     Examples:
       | First Name | Last Name |  Emp ID |
-      | 1111       | 2222      | 8979x  |
+      | 1111       | 2222      | 897z9cx  |
 
 
   Scenario Outline: Add a new employee with login details successfully
@@ -40,7 +40,7 @@ Feature: Employee Management
 
     Examples:
       | First Name | Last Name | Emp ID    | Full Name           | Username  | Password |
-      | John       | Doe       | 8980x      | John Doe           | johaszx.do  | Password123 |
+      | John       | Doe       | 898zc0x      | John Doe           | johcaszx.do  | Password123 |
 
 
 
@@ -59,4 +59,4 @@ Feature: Employee Management
 
     Examples:
       | First Name | Last Name | Emp ID    | Full Name           |
-      | John       | Doe       |8991x    | John Doe           |
+      | John       | Doe       |89c9z1x    | John Doe           |
