@@ -4,27 +4,27 @@ import net.serenitybdd.annotations.DefaultUrl;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebElement;
-import pages.wrappers.PageObjectWrapper;
+import utils.PagePaths;
 
 
-@DefaultUrl("/auth/login")
-public class LoginPage extends PageObjectWrapper {
+@DefaultUrl(PagePaths.LOGIN)
+public class LoginPage extends PageObjectBase {
     @FindBy(name = "username")
-    private WebElement username;
+    private WebElementFacade username;
 
     @FindBy(name = "password")
-    private WebElement password;
+    private WebElementFacade password;
 
     @FindBy(xpath = "//button[contains(@class, 'oxd-button--main')]")
     private WebElementFacade loginButton;
 
 
-    public void enterusername() {
-        username.sendKeys("Admin");
+    public void enterusername(String usernamevalue) {
+        username.sendKeys(usernamevalue);
     }
 
-    public void enteruserpw() {
-        password.sendKeys("admin123");
+    public void enteruserpw(String passwordvalue) {
+        password.sendKeys(passwordvalue);
     }
 
     public void clickLogin() {

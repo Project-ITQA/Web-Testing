@@ -4,33 +4,32 @@ import pages.LoginPage;
 import utils.TestUtils;
 import net.serenitybdd.annotations.Step;
 
-public class HomepageSteps {
+public class LoginSteps {
 
-LoginPage homepage;
+LoginPage loginPage;
 
     @Step("Opening Page")
     public void OpenAppication()
     {
-        homepage.open();
+        loginPage.open();
         TestUtils.addDelay(3000);
     }
 
     @Step("Entering username as {0}")
     public void EnterUserName(String username)
     {
-        homepage.enterusername();
+        loginPage.enterusername(username);
     }
 
     @Step("Entering password as {0}")
     public void EnterPasword(String password)
     {
-homepage.enteruserpw();
+loginPage.enteruserpw(password);
     }
 
     @Step("Clicking Login Button")
     public void ClickLoginButton()
     {
-homepage.clickLogin();
+loginPage.clickLogin();
     }
-
 }
