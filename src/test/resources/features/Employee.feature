@@ -36,7 +36,7 @@ Feature: Employee Management
     When user logs out
     When user enters "<Username>" as username
     And user enters "<Password>" as password
-    Then user should be able to login
+    Then user should be on dashboard page
 
     Examples:
       | First Name | Last Name | Emp ID    | Full Name           | Username  | Password |

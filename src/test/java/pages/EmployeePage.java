@@ -200,7 +200,7 @@ public class EmployeePage extends PageObjectBase {
         userDropdown.click();
         logoutLink.click();
 
-        wait.until(ExpectedConditions.urlToBe(PagePaths.LOGIN));
+        wait.until(ExpectedConditions.urlToBe("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"));
     }
 
     public void userNavigateToEmployeeListTab() {
