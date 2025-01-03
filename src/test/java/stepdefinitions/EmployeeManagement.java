@@ -27,10 +27,10 @@ public class EmployeeManagement {
         employeeSteps.navigateToAddEmployeePage();
     }
 
-    @When("user enters valid employee details {string} and {string}")
-    public void userEnterUsername(String firstName, String lastName) {
+    @When("user enters valid employee details {string} and {string} and {string}")
+    public void userEnterUsername(String firstName, String lastName, String empId) {
 
-        employeeSteps.enterEmployeeDetails(firstName, lastName);
+        employeeSteps.enterEmployeeDetails(firstName, lastName, empId);
     }
 
     @And("user saves the new employee")
@@ -46,9 +46,9 @@ public class EmployeeManagement {
     }
 
 
-    @When("user enters invalid employee details {string} and {string}")
-    public void userEntersInvalidEmployeeDetails(String firstName, String lastName) {
-        employeeSteps.enterEmployeeDetails(firstName, lastName);
+    @When("user enters invalid employee details {string} and {string} and {string}")
+    public void userEntersInvalidEmployeeDetails(String firstName, String lastName , String empId) {
+        employeeSteps.enterEmployeeDetails(firstName, lastName , empId);
     }
 
     @Then("user should not be redirected to employee details page")
@@ -80,16 +80,36 @@ public class EmployeeManagement {
     }
 
 
+    @Then("user navigate to Employee List tab")
+    public void userNavigateToEmployeeListTab() {
+        employeeSteps.userNavigateToEmployeeListTab();
+    }
 
-//    @When("user logs in with username {string} and password {string}")
-//    public void userLogsInWithCredentials(String username, String password) {
-//        employeeSteps.loginWithCredentials(username, password);
-//    }
-//
-//    @Then("user should be logged in successfully")
-//    public void userShouldBeLoggedInSuccessfully() {
-//        employeeSteps.verifySuccessfulLogin();
-//    }
+    @And("user search for {string} employee")
+    public void userSearchForEmployee(String arg0) {
+        employeeSteps.searchEmployee(arg0);
+    }
+
+    @Then("user get the serch results")
+    public void userGetTheSerchResults() {
+        employeeSteps.thereAreSearchResult();
+    }
+
+    @And("user delete the employee")
+    public void userFilterCorrectUserByAndClickDelete() {
+        employeeSteps.deleteRowByEmpID();
+    }
+
+    @Then("user click yes in pop-up")
+    public void userClickYesInPopUp() {
+    employeeSteps.userClickYesInPopUp();
+    }
+
+    @And("user get No Records Found on the table")
+    public void userGetNoRecordsFoundOnTheTable() {
+    }
+
+
 
 
 

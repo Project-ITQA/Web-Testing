@@ -1,5 +1,7 @@
 package pages;
 
+import groovy.lang.GString;
+import jxl.common.AssertionFailed;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
@@ -71,6 +73,10 @@ public class EmployeePage extends PageObject {
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[1]/div/div[2]/input")
     private WebElementFacade passwordField;
 
+    @FindBy(xpath = "    //*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[1]/div[2]/div/div/div[2]/input")
+    private WebElementFacade EmpIDField;
+
+
     @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div/form/div[1]/div[2]/div[4]/div/div[2]/div/div[2]/input")
     private WebElementFacade confirmPasswordField;
 
@@ -82,6 +88,59 @@ public class EmployeePage extends PageObject {
 
     @FindBy(css = "a.oxd-userdropdown-link[href='/web/index.php/auth/logout']")
     private WebElementFacade logoutLink;
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[1]/header/div[2]/nav/ul/li[2]/a")
+    private WebElementFacade employeeList;
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[1]/div/div[2]/div/div/input")
+    private WebElementFacade employeeserchbox;
+
+    @FindBy(xpath = "    //*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/input")
+    private WebElementFacade employeeserchIDbox;
+
+//    @FindBy(xpath = "//button[text()='Search']")
+    @FindBy(xpath = "//*[contains(text(),'Rset')]")
+    private WebElementFacade empserchbutton;
+
+
+    @FindBy(xpath = "//*[@id='app']/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/span")
+    private WebElementFacade ResultfoundSpan;
+
+
+    @FindBy(xpath = "//*[@id='app']/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/span[contains(text(), 'Found')]")
+    private WebElementFacade foundSpan;
+
+    //*[@id="app"]/div[3]/div/div/div/div[1]/p
+    @FindBy(xpath = "//p[contains(text(), 'Are you Sure?')]")
+    private WebElementFacade popup;
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[3]/div/div/div/div[3]/button[2]")
+    private WebElementFacade popupButton;
+
+    @FindBy(xpath = "//button[contains(text(), ' Search ')]")
+    private WebElementFacade empsearchButton2;
+
+    @FindBy(xpath = "//button[contains(@class, 'oxd-button--secondary') and contains(@class, 'orangehrm-left-space')]")
+    private WebElementFacade searchButton3;
+//
+//    @FindBy(xpath = "//button[@type='submit' and contains(text(), ' Search ')]")
+//    private WebElementFacade searchButtonwork;
+
+    @FindBy(xpath = "//*[@id='app']/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button[2]")
+    private WebElementFacade searchButtonwork;
+
+
+    @FindBy(xpath = "//*[@id=\"app\"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[9]/div/button[2]\n")
+    private WebElementFacade deleteButtonwork;
+
+
+
+
+
+
+
+
+
 
 
     private WebDriverWait wait;
@@ -99,12 +158,26 @@ public class EmployeePage extends PageObject {
         wait.until(ExpectedConditions.visibilityOf(AddEmployeeButton)).click();
     }
 
-    public void enterEmployeeDetails(String firstName, String lastName)
-    {
-    firstname.sendKeys(firstName);
-    lastname.sendKeys(lastName);
+//    public void enterEmployeeDetails(String firstName, String lastName, String empId)
+//    {
+//        EmpIDField.clear();
+//    firstname.sendKeys(firstName);
+//    lastname.sendKeys(lastName);
+//    EmpIDField.sendKeys(empId);
+//
+//    }
 
+    public void enterEmployeeDetails(String firstName, String lastName, String empId) {
+        wait.until(ExpectedConditions.visibilityOf(EmpIDField));
+        EmpIDField.click();
+        EmpIDField.sendKeys(org.openqa.selenium.Keys.chord(org.openqa.selenium.Keys.CONTROL, "a"));
+        EmpIDField.sendKeys(org.openqa.selenium.Keys.DELETE);
+
+        firstname.sendKeys(firstName);
+        lastname.sendKeys(lastName);
+        EmpIDField.sendKeys(empId);
     }
+
 
     public void saveEmployee() {
 
@@ -186,6 +259,99 @@ public class EmployeePage extends PageObject {
 
         wait.until(ExpectedConditions.urlToBe("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"));
     }
+
+    public void userNavigateToEmployeeListTab() {
+        employeeList.click();
+    }
+
+    public void verifyRedirectionToEmployeeListTab() {
+        boolean isRedirected = wait.until(ExpectedConditions.urlContains("viewEmployeeList"));
+
+        if (!isRedirected) {
+            throw new AssertionError("Unexpected Not redirection to the employee list");
+        }
+    }
+
+    public void searchEmployee(String searchText) {
+        employeeserchbox.clear();
+
+        employeeserchIDbox.sendKeys(searchText);
+        TestUtils.addDelay(2000);
+//        empserchbutton.click();
+//        wait.until(ExpectedConditions.visibilityOf(searchButton));
+        searchButtonwork.click();
+    }
+
+//public void searchEmployee(String searchText) {
+//    employeeserchIDbox.sendKeys(searchText);
+//    wait.until(ExpectedConditions.visibilityOf(empserchbutton));
+//    scrollIntoView(empserchbutton);
+//    try {
+//        wait.until(ExpectedConditions.elementToBeClickable(empserchbutton)).click();
+//    } catch (Exception e) {
+//        evaluateJavascript("arguments[0].click();", empserchbutton);
+//    }
+//}
+
+
+    // Helper method to scroll into view
+    private void scrollIntoView(WebElementFacade element) {
+        evaluateJavascript("arguments[0].scrollIntoView(true);", element);
+    }
+
+
+    public void thereAreSearchResult()
+    {
+        wait.until(ExpectedConditions.visibilityOf(ResultfoundSpan));
+        String displayedText = ResultfoundSpan.getText();
+
+        System.out.println(displayedText);
+        if (displayedText.contains("No Records Found")) {
+            throw new AssertionError("Search result returned: 'No Record Found'. Expected records to be found.");
+        }
+
+    }
+
+    //*[@id="app"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div
+    //*[@id="app"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[9]/div/button[2]
+    public void deleteRowByEmpID() {
+//        try {
+////            wait.until(ExpectedConditions.visibilityOf((WebElement) By.xpath("//div[@class='oxd-table-body']//div[contains(text(), '" + empID + "')]")));
+////            WebElementFacade employeeRow = find(By.xpath("//div[@class='oxd-table-body']//div[contains(text(), '" + empID + "')]"));
+////            WebElement deleteButton = employeeRow.then(By.xpath("./following-sibling::td//button[@class='delete-button']"));
+////            deleteButton.click();
+//            return true;
+//        } catch (Exception e) {
+//            return false;
+//        }
+
+
+        wait.until(ExpectedConditions.visibilityOf(deleteButtonwork));
+        deleteButtonwork.click();
+//        TestUtils.addDelay(2000);
+    }
+
+    public void pressPopUp()
+    {
+//        wait.until(ExpectedConditions.visibilityOf(popup));
+
+        popupButton.click();
+
+    }
+
+    public void userGetNoRecordsFoundOnTheTable(){
+        wait.until(ExpectedConditions.visibilityOf(ResultfoundSpan));
+        String displayedText = ResultfoundSpan.getText();
+
+        System.out.println(displayedText);
+        if (displayedText.contains("Records Found")) {
+            throw new AssertionError("Search result returned: 'Some Records Found'. Expected records not to be found.");
+        }
+    }
+
+
+
+
 
 
 //        public void loginWithCredentials(String username, String password) {
