@@ -1,6 +1,7 @@
 package tests;
 
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
@@ -19,7 +20,7 @@ public class UpdateContactDetails {
     @Steps
     CommonSteps commonSteps;
 
-    @When("the user navigates to the {string} tab")
+    @Given("the user navigates to the {string} tab")
     public void theUserNavigatesToTheTab(String tabName) {
         dashboardSteps.navigateToTab(tabName);
         TestUtils.addDelay();
@@ -30,7 +31,7 @@ public class UpdateContactDetails {
         myInfoSteps.verifyOnMyInfoPage();
     }
 
-    @When("the user navigates to {string} section")
+    @Given("the user navigates to {string} section")
     public void theUserNavigatesToSection(String sectionName) {
         myInfoSteps.navigateToSection(sectionName);
         TestUtils.addDelay();
@@ -42,13 +43,13 @@ public class UpdateContactDetails {
         myInfoSteps.verifyOnSection(sectionName);
     }
 
-    @When("the user updates their contact details by typing values - {string}")
-    public void theUserUpdatesTheirContactDetailsWithValuesByTyping(String valuePairs) {
+    @When("the user enter the contact details by typing values - {string}")
+    public void theUserEnterTheirContactDetailsWithValuesByTyping(String valuePairs) {
         commonSteps.fillInputFieldsHavingLabels(valuePairs);
     }
 
-    @And("the user updates their contact details by selecting options with values - {string}")
-    public void theUserUpdatesTheirContactDetailsWithValuesBySelecting(String valuePairs) {
+    @And("the user enter the contact details by selecting options with values - {string}")
+    public void theUserEnterTheirContactDetailsWithValuesBySelecting(String valuePairs) {
         commonSteps.selectDropdownOptionsWithLabels(valuePairs);
     }
 
@@ -60,7 +61,6 @@ public class UpdateContactDetails {
     @And("the user clicks on the {string} button")
     public void theUserClicksOnTheButton(String buttonName) {
         commonSteps.clickOnButtonHavingLabel(buttonName);
-        TestUtils.addDelay();
     }
 
     @Then("the user should see input validation error messages")

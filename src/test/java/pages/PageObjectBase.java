@@ -34,7 +34,7 @@ public class PageObjectBase extends PageObject {
     }
 
     public String getToastMessage() {
-        WebElementFacade toastMessage = findBy(".oxd-text--toast-title");
+        WebElementFacade toastMessage = findBy("//div[@class='oxd-toast-content']//p[contains(@class, 'oxd-text--toast-message')]");
         toastMessage.waitUntilVisible();
         return toastMessage.getText();
     }
@@ -48,5 +48,19 @@ public class PageObjectBase extends PageObject {
     public List<String> getInputValidationErrors(){
         List<WebElementFacade> errors = findAll(".oxd-input-field-error-message");
         return errors.stream().map(WebElementFacade::getText).toList();
+    }
+
+    public int getValueOccurencesCountInTable(String value) {
+        List<WebElementFacade> cells = findAll("//div[@class='oxd-table-cell oxd-padding-cell' and @role='cell']");
+        return cells.stream().filter(item->{
+            item.waitUntilVisible();
+            return item.getText().contains(value);
+        }).toList().size();
+    }
+
+    public boolean checkIfAPromptIsShowingWithMessage(String message){
+        WebElementFacade prompt = findBy("//div[@class='orangehrm-modal-header']//p");
+        prompt.waitUntilVisible();
+        return prompt.getText().contains(message);
     }
 }

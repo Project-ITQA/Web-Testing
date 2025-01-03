@@ -22,6 +22,19 @@ public class MyInfoPage extends PageObjectBase {
     }
 
     public boolean verifySection(String section) {
-        return sectionTitle.getText().equalsIgnoreCase(section);
+        return sectionTitle.getText().contains(section);
     }
+
+    public void clickTheButtonInTheSpace(String spaceTitle, String buttonLabel) {
+        WebElementFacade button = findBy("//h6[text()='" + spaceTitle + "']/following::button[.//text()[contains(., '" + buttonLabel + "')]]");
+        button.waitUntilVisible();
+        button.click();
+    }
+
+    public void clickOnDeleteIconButtonInRowWithValue(String value) {
+        WebElementFacade button = findBy("//div[@class='oxd-table-row oxd-table-row--with-border']//div[contains(text(), '" + value + "')]/following::button[1]");
+        button.waitUntilVisible();
+        button.click();
+    }
+
 }
