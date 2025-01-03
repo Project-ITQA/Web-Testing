@@ -1,13 +1,13 @@
-package stepdefinitions;
+package tests;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
-import pages.AddCandidatesPageStepLibrary;
-import pages.CandidatesPageStepLibrary;
-import pages.ViewCandidatePageStepLibrary;
+import steps.AddCandidatesPageStepLibrary;
+import steps.CandidatesPageStepLibrary;
+import steps.ViewCandidatePageStepLibrary;
 import utils.TestUtils;
 
 public class AddCandidateStepDefinitions {
