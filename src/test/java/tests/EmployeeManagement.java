@@ -1,12 +1,12 @@
-package stepdefinitions;
+package tests;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
-import pages.DashboardSteps;
-import pages.EmployeeSteps;
+import steps.DashboardSteps;
+import steps.EmployeeSteps;
 
 public class EmployeeManagement {
     @Steps
@@ -55,11 +55,6 @@ public class EmployeeManagement {
     public void userShouldNotBeRedirectedToEmployeeDetailsPage() {
         employeeSteps.verifyNoRedirectionToPersonalDetails();
     }
-
-//    @Then("user should not see the invalid employee {string} in the employee list")
-//    public void userShouldNotSeeInvalidEmployeeInEmployeeList(String fullName) {
-//        employeeSteps.verifyInvalidEmployeeNotInList(fullName);
-//    }
 
     @And("user toggles create login details")
     public void userTogglesCreateLoginDetails() {

@@ -1,11 +1,12 @@
-package pages;
+package steps;
 
 import net.serenitybdd.annotations.Step;
-import net.serenitybdd.annotations.Steps;
+import pages.AuthenticatedBaseTest;
+import pages.EmployeePage;
 
 import static org.junit.Assert.assertTrue;
 
-public class EmployeeSteps extends AuthenticatedBaseTest{
+public class EmployeeSteps extends AuthenticatedBaseTest {
 
 //    @Steps
     EmployeePage employeePage;

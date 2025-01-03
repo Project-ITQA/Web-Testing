@@ -1,36 +1,15 @@
 package pages;
 
-import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.WebElementFacade;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.TestUtils;
-import net.serenitybdd.core.pages.PageObject;
-import org.junit.Assert;
+import net.serenitybdd.annotations.DefaultUrl;
+import pages.components.SideNavigationMenu;
+import utils.PagePaths;
 
-import java.time.Instant;
+@DefaultUrl(PagePaths.DASHBOARD)
+public class DashboardPage extends PageObjectBase {
 
-public class DashBoardPage extends PageObject {
+    SideNavigationMenu sideNavigationMenu;
 
-
-
-
-    private WebDriverWait wait;
-
-
-    public void Loginverify()
-    {
-
-        String currentURL = (getDriver().getCurrentUrl());
-        System.out.println(currentURL);
-        assert currentURL != null;
-        Assert.assertTrue(currentURL.contains("dashboard"));
-        TestUtils.addDelay(4000);
+    public void clickMenuItem(String menuItemName) {
+        sideNavigationMenu.clickMenuItem(menuItemName);
     }
-
-
-
-
-
 }
