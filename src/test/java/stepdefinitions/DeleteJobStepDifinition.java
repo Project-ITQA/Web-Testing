@@ -22,7 +22,7 @@ public class DeleteJobStepDifinition {
         jobListPageSteps.clickDeleteButton(title);
     }
 
-    @When("User clicks on the confirm Button")
+    @When("User clicks on the confirm Button in job management")
     public void userClicksOnTheConfirmButton() {
         jobListPageSteps.clickConfirmDeleteButton();
     }
