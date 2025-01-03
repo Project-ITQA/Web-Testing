@@ -4,11 +4,11 @@ import net.serenitybdd.annotations.DefaultUrl;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebElement;
-import pages.wrappers.PageObjectWrapper;
+import utils.PagePaths;
 
 
-@DefaultUrl("/auth/login")
-public class LoginPage extends PageObjectWrapper {
+@DefaultUrl(PagePaths.LOGIN)
+public class LoginPage extends PageObjectBase {
     @FindBy(name = "username")
     private WebElement username;
 

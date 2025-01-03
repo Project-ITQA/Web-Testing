@@ -3,33 +3,33 @@ package tests;
 import io.cucumber.java.en.*;
 import net.serenitybdd.annotations.Steps;
 import steps.DashboardSteps;
-import steps.HomepageSteps;
+import steps.LoginSteps;
 
 public class LoginToApplication {
     @Steps
-    HomepageSteps home;
+    LoginSteps loginSteps;
 
     @Steps
-    DashboardSteps dash;
+    DashboardSteps dashboardSteps;
 
     @Given("user is on home page")
     public void userIsOnHomePage() {
-        home.OpenAppication();
+        loginSteps.OpenAppication();
     }
 
     @When("user enters {string} as username")
     public void userEnterUsername(String username) {
-        home.EnterUserName(username);
+        loginSteps.EnterUserName(username);
     }
 
     @When("user enters {string} as password")
     public void userEnterPassword(String password) {
-        home.EnterPasword(password);
-        home.ClickLoginButton();
+        loginSteps.EnterPasword(password);
+        loginSteps.ClickLoginButton();
     }
 
-    @Then("user should be able to login")
-    public void userShouldBeAbleToLogin() {
-        dash.VerifyAdminLogin();
+    @Then("user should be on dashboard page")
+    public void userShouldBeOnDashboardPage() {
+        dashboardSteps.verifyIsOnDashboardPage();
     }
 }
