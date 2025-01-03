@@ -16,3 +16,12 @@ Feature: Update Contact Details In My Info
     And the user clicks on the "Save" button
     Then a toast with "Success" message should be displayed
 
+  Scenario: User tries to update contact details with invalid input
+    When the user navigates to the "My Info" tab
+    Then the user should be on the My Info page
+    When the user navigates to "Contact Details" section
+    Then the user should be on the "Contact Details" section
+    When the user updates their contact details by typing values - "City:15145, State/Province:64655, Zip/Postal Code:test"
+    And the user clicks on the "Save" button
+    Then the user should see input validation error messages
+

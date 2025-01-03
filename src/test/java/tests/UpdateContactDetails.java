@@ -54,12 +54,18 @@ public class UpdateContactDetails {
 
     @Then("a toast with {string} message should be displayed")
     public void aToastWithMessageShouldBeDisplayed(String message) {
-        commonSteps.checkToastPopUpWithMessage(message);
+        commonSteps.verifyToastPopUpWithMessage(message);
     }
 
     @And("the user clicks on the {string} button")
     public void theUserClicksOnTheButton(String buttonName) {
         commonSteps.clickOnButtonHavingLabel(buttonName);
+        TestUtils.addDelay();
+    }
+
+    @Then("the user should see input validation error messages")
+    public void theUserShouldSeeInputValidationErrorMessages() {
+        commonSteps.checkIfThereIsAnyInputValidationsErrors();
         TestUtils.addDelay();
     }
 }

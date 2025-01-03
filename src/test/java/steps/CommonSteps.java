@@ -32,13 +32,18 @@ public class CommonSteps {
         }
     }
 
-    @Step("check if a toast pops up with message {0}")
-    public void checkToastPopUpWithMessage(String message) {
+    @Step("verify if a toast pops up with message {0}")
+    public void verifyToastPopUpWithMessage(String message) {
         Assert.assertTrue("toast message was not" + message, basePage.getToastMessage().equalsIgnoreCase(message));
     }
 
     @Step("click on the button having label {0}")
     public void clickOnButtonHavingLabel(String label) {
         basePage.clickButtonWithLabel(label);
+    }
+
+    @Step("check if there's any input validations errors")
+    public void checkIfThereIsAnyInputValidationsErrors() {
+        Assert.assertNotEquals("There are no input validation errors shown", 0, basePage.getInputValidationErrors().size());
     }
 }

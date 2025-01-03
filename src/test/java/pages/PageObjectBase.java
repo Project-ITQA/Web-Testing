@@ -2,6 +2,9 @@ package pages;
 
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
+import org.openqa.selenium.Keys;
+
+import java.util.List;
 
 public class PageObjectBase extends PageObject {
 
@@ -14,7 +17,9 @@ public class PageObjectBase extends PageObject {
     public void fillInputFieldHavingLabel(String label, String value) {
         WebElementFacade inputField = findBy("//label[normalize-space()='"+ label +"']/following::div//input");
         inputField.waitUntilVisible();
-        inputField.clear();
+        inputField.click();
+        inputField.sendKeys(Keys.CONTROL, "a");
+        inputField.sendKeys(Keys.DELETE);
         inputField.sendKeys(value);
     }
 
@@ -38,5 +43,10 @@ public class PageObjectBase extends PageObject {
         WebElementFacade button = findBy("//button[contains(@class, 'oxd-button') and contains(normalize-space(), '" + label + "')]");
         button.waitUntilVisible();
         button.click();
+    }
+
+    public List<String> getInputValidationErrors(){
+        List<WebElementFacade> errors = findAll(".oxd-input-field-error-message");
+        return errors.stream().map(WebElementFacade::getText).toList();
     }
 }
