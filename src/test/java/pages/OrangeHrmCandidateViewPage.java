@@ -1,11 +1,10 @@
 package pages;
 
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.junit.Assert;
 
-public class OrangeHrmCandidateViewPage extends PageObject {
+public class OrangeHrmCandidateViewPage extends PageObjectBase {
     @FindBy(xpath = "//label[text()='Name']/parent::div/following-sibling::div//p")
     private WebElementFacade nameField;
 

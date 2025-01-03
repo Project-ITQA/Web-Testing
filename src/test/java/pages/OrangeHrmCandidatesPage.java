@@ -2,7 +2,6 @@ package pages;
 
 import net.serenitybdd.annotations.DefaultUrl;
 import net.serenitybdd.core.annotations.findby.By;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.ui.Button;
 import org.junit.Assert;
@@ -10,7 +9,7 @@ import utils.TestUtils;
 import java.util.List;
 
 @DefaultUrl("https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/viewCandidates")
-public class OrangeHrmCandidatesPage extends PageObject {
+public class OrangeHrmCandidatesPage extends PageObjectBase {
 
     private WebElementFacade getCandidateRow(String firstName, String lastName) {
         for (WebElementFacade row : findAll(By.cssSelector(".oxd-table-row"))) {

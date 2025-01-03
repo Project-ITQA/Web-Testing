@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 
 @DefaultUrl("https://opensource-demo.orangehrmlive.com/web/index.php/recruitment/addCandidate")
-public class OrangeHrmAddCandidatePage extends PageObject {
+public class OrangeHrmAddCandidatePage extends PageObjectBase {
     @FindBy(name="firstName")
     private WebElementFacade firstNameField;
 
