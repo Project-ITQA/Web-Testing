@@ -37,7 +37,7 @@ public class EditJobStepdefinition {
        editJobPageStep.fillEditJobTitle(title);
     }
 
-    @When("User clicks the Edit page Submit button")
+    @When("User clicks the Edit page Submit button in job management")
     public void user_clicks_the_edit_page_submit_button() {
         editJobPageStep.clickSubmit();
         TestUtils.addDelay(3000);

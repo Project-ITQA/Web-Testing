@@ -21,7 +21,7 @@ public class AddJobStepDefinition {
         jobListPageSteps.openJobListPage();
     }
 
-    @When("User clicks on the Add button")
+    @When("User clicks on the Add button in job management")
     public void userClicksOnTheAddButton() {
         jobListPageSteps.clickAddJobButton();
     }
@@ -38,7 +38,7 @@ public class AddJobStepDefinition {
         TestUtils.addDelay(3000);
     }
 
-    @When("User clicks the submit button")
+    @When("User clicks the submit button in job management")
     public void userClicksTheSubmitButton() {
         addjobPageSteps.clickSubmit();
         TestUtils.addDelay(3000);
