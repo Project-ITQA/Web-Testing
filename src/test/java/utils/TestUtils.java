@@ -31,4 +31,16 @@ public class TestUtils {
                 }
         ).findFirst().orElse(null);
     }
+
+    public static void selectOptionFrom(List<WebElementFacade> visibleOptions, String option){
+        for (WebElementFacade element :
+                visibleOptions) {
+            element.waitUntilVisible();
+
+            if (element.containsText(option)) {
+                element.click();
+                break;
+            }
+        }
+    }
 }
