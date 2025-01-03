@@ -4,9 +4,9 @@ import net.serenitybdd.core.pages.PageObject;
 
 public class PageObjectWrapper extends PageObject {
 
-    public boolean verifyURLContains(String expectedPath) {
-        String currentURL = getDriver().getCurrentUrl();
-        assert currentURL != null;
-        return currentURL.contains(expectedPath);
+    public boolean verifyPagePath(String path) {
+        String url = getDriver().getCurrentUrl();
+        assert url != null;
+        return url.contains(path);
     }
 }

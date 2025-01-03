@@ -5,9 +5,10 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebElement;
 import pages.wrappers.PageObjectWrapper;
+import utils.PagePaths;
 
 
-@DefaultUrl("/auth/login")
+@DefaultUrl(PagePaths.LOGIN)
 public class LoginPage extends PageObjectWrapper {
     @FindBy(name = "username")
     private WebElement username;
