@@ -18,13 +18,13 @@ LoginPage loginPage;
     @Step("Entering username as {0}")
     public void EnterUserName(String username)
     {
-        loginPage.enterusername();
+        loginPage.enterusername(username);
     }
 
     @Step("Entering password as {0}")
     public void EnterPasword(String password)
     {
-loginPage.enteruserpw();
+loginPage.enteruserpw(password);
     }
 
     @Step("Clicking Login Button")
