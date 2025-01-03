@@ -2,10 +2,7 @@ Feature: Submit a Claim
 
   Background:
     # Login to the system
-    Given user is on home page
-    When user enters "Admin" as username
-    And user enters "admin123" as password
-    Then user should be able to login
+    Given user is logged in as an Admin
 
     # Add a new claim
     Given the user is on the Claims Page
