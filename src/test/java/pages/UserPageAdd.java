@@ -3,7 +3,6 @@ package pages;
 import net.serenitybdd.annotations.DefaultUrl;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.junit.Assert;
 import utils.TestUtils;
 
@@ -12,7 +11,7 @@ import java.util.NoSuchElementException;
 
 
 @DefaultUrl("https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveSystemUser")
-public class UserPageAdd extends PageObject {
+public class UserPageAdd extends PageObjectBase {
 
     @FindBy(xpath = "//label[normalize-space()='User Role']/following::div[contains(@class, 'oxd-select-wrapper')][1]")
     private WebElementFacade userRoleField;

@@ -1,15 +1,13 @@
 package pages;
 
 import net.serenitybdd.annotations.DefaultUrl;
-import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
-import net.thucydides.core.pages.PageObject;
 import org.junit.Assert;
 import utils.TestUtils;
 
 @DefaultUrl("https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers")
-public class UserManagementPage extends PageObject {
+public class UserManagementPage extends PageObjectBase {
 
     @FindBy(xpath = "//button[normalize-space()='Add']")
     private WebElementFacade addUserButton;

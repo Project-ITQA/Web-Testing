@@ -1,10 +1,9 @@
-package stepdefinitions;
+package tests;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
-import pages.UserManagementPage;
-import pages.UserManagementPageStepLibrary;
+import steps.UserManagementPageStepLibrary;
 import utils.TestUtils;
 
 public class DeleteUserStepDefinitions {
@@ -17,7 +16,7 @@ public class DeleteUserStepDefinitions {
         userManagementPageStepLibrary.clickDeleteButton(username);
     }
 
-    @When("User clicks on the confirm button")
+    @When("User clicks on the confirm button in user management")
     public void userClicksOnTheConfirmButton() {
         userManagementPageStepLibrary.clickConfirmDeleteButton();
     }

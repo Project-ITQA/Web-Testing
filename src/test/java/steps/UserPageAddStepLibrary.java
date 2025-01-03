@@ -1,6 +1,7 @@
-package pages;
+package steps;
 
 import net.serenitybdd.annotations.Step;
+import pages.UserPageAdd;
 
 public class UserPageAddStepLibrary {
     UserPageAdd userPageAdd;

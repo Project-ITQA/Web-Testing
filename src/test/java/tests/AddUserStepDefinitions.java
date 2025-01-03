@@ -1,12 +1,12 @@
-package stepdefinitions;
+package tests;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import net.serenitybdd.annotations.Steps;
-import pages.UserManagementPageStepLibrary;
-import pages.UserPageAddStepLibrary;
+import steps.UserManagementPageStepLibrary;
+import steps.UserPageAddStepLibrary;
 import utils.TestUtils;
 
 public class AddUserStepDefinitions {
@@ -22,7 +22,7 @@ public class AddUserStepDefinitions {
         userPage.openUserPage();
     }
 
-    @When("User clicks on the Add button")
+    @When("User clicks on the Add button in user management")
     public void user_clicks_on_the_Add_button(){
         userPage.clickUserAddButton();
     }
@@ -74,7 +74,7 @@ public class AddUserStepDefinitions {
         addUserPage.verifyPasswordDoNotMatchMessage();
     }
 
-    @When("User clicks the submit button")
+    @When("User clicks the submit button in user management")
     public void user_clicks_the_submit_button() {
         addUserPage.clickSubmitButton();
         TestUtils.addDelay(3000);
