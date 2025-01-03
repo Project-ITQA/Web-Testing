@@ -6,11 +6,10 @@ import net.serenitybdd.annotations.Step;
 
 public class LoginSteps {
 
-LoginPage loginPage;
+    LoginPage loginPage;
 
     @Step("Opening Page")
-    public void OpenAppication()
-    {
+    public void OpenAppication() {
         loginPage.open();
         TestUtils.addDelay(3000);
     }
@@ -24,12 +23,11 @@ LoginPage loginPage;
     @Step("Entering password as {0}")
     public void EnterPasword(String password)
     {
-loginPage.enteruserpw(password);
+      loginPage.enteruserpw(password);
     }
 
     @Step("Clicking Login Button")
-    public void ClickLoginButton()
-    {
-loginPage.clickLogin();
+    public void ClickLoginButton() {
+        loginPage.clickLogin();
     }
 }

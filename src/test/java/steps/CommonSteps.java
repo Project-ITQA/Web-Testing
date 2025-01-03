@@ -44,6 +44,29 @@ public class CommonSteps {
 
     @Step("check if there's any input validations errors")
     public void checkIfThereIsAnyInputValidationsErrors() {
-        Assert.assertNotEquals("There are no input validation errors shown", 0, basePage.getInputValidationErrors().size());
+        Assert.assertNotEquals("There are no input validation errors shown", 0,
+                basePage.getInputValidationErrors().size()
+        );
+    }
+
+    @Step("check if a record is available with value {0}")
+    public void checkIfTheRecordIsAvailable(String value) {
+        Assert.assertNotEquals("Record with value " + value + " is not on the table", 0,
+                basePage.getValueOccurencesCountInTable(value)
+        );
+    }
+
+    @Step("check if no records is available with value {0}")
+    public void checkIfNoRecordsAvailableWith(String value) {
+        Assert.assertEquals("Record with value" + value + " is available on the table", 0,
+                basePage.getValueOccurencesCountInTable(value)
+        );
+    }
+
+    @Step("check if a prompt is visible with message {0}")
+    public void checkIfAPromptWithMessageIsVisible(String message) {
+        Assert.assertTrue("prompt with the " + message + " is not visible",
+                basePage.checkIfAPromptIsShowingWithMessage(message)
+        );
     }
 }
