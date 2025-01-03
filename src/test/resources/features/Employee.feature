@@ -1,7 +1,11 @@
 Feature: Employee Management
 
   Background: User is logged in as an Admin
-    Given user is logged in as an Admin
+    Given user is on home page
+    When user enters "Admin" as username
+    And user enters "admin123" as password
+    Then user should be on dashboard page
+#    Given user is logged in as an Admin
 
   Scenario Outline: Add a new employee successfully
     Given user navigates to the Add Employee page
@@ -11,7 +15,7 @@ Feature: Employee Management
 
     Examples:
       | First Name | Last Name    | Full Name           |  Emp ID |
-      | Yukthi     | Hettiarachchi | Yukthi Hettiarachchi | 89z78cx |
+      | Yukthi     | Hettiarachchi | Yukthi Hettiarachchi | 819zd78cx |
 
 
   Scenario Outline: Prevent saving invalid employee names
@@ -22,7 +26,7 @@ Feature: Employee Management
 
     Examples:
       | First Name | Last Name |  Emp ID |
-      | 1111       | 2222      | 897z9cx  |
+      | 1111       | 2222      | 819sd7z9cx  |
 
 
   Scenario Outline: Add a new employee with login details successfully
@@ -40,7 +44,7 @@ Feature: Employee Management
 
     Examples:
       | First Name | Last Name | Emp ID    | Full Name           | Username  | Password |
-      | John       | Doe       | 898zc0x      | John Doe           | johcaszx.do  | Password123 |
+      | John       | Doe       | 819q8zc0x      | John Doe           | jo1caszx.do  | Password123 |
 
 
 
@@ -59,4 +63,4 @@ Feature: Employee Management
 
     Examples:
       | First Name | Last Name | Emp ID    | Full Name           |
-      | John       | Doe       |89c9z1x    | John Doe           |
+      | John       | Doe       |819dc9z1x    | John Doe           |
