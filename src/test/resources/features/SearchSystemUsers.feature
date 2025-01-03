@@ -6,7 +6,7 @@ Feature: Search User
     And user enters "admin123" as password
     Then user should be on dashboard page
 
-  Scenario:
+  Scenario: Search User
     Given User is on the Admin User Management page
     And User clicks on the Add button in user management
     And User is navigated to the Add User page
