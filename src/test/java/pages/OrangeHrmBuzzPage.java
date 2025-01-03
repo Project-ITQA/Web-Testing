@@ -3,14 +3,13 @@ package pages;
 import net.serenitybdd.annotations.DefaultUrl;
 import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 
 @DefaultUrl("https://opensource-demo.orangehrmlive.com/web/index.php/buzz/viewBuzz")
-public class OrangeHrmBuzzPage extends PageObject {
+public class OrangeHrmBuzzPage extends PageObjectBase {
     @FindBy(xpath = "//textarea[contains(@class, 'oxd-buzz-post-input')]")
     private WebElementFacade buzzPostInput;
 

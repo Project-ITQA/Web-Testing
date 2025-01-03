@@ -4,7 +4,7 @@ Feature: Delete Buzz Post
     Given user is on home page
     When user enters "Admin" as username
     And user enters "admin123" as password
-    Then user should be able to login
+    Then user should be on dashboard page
     Given user is on buzz page
 
   Scenario: delete a post
