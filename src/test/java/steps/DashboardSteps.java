@@ -13,4 +13,9 @@ public class DashboardSteps {
     public void verifyIsOnDashboardPage() {
         Assert.assertTrue(dashboardPage.verifyPagePath(PagePaths.DASHBOARD));
     }
+
+    @Step("navigate to {0} tab")
+    public void navigateToTab(String tabName) {
+        dashboardPage.clickMenuItem(tabName);
+    }
 }
