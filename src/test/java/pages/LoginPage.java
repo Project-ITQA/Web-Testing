@@ -2,16 +2,13 @@ package pages;
 
 import net.serenitybdd.annotations.DefaultUrl;
 import net.serenitybdd.core.annotations.findby.FindBy;
-import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebElement;
+import utils.PagePaths;
 
 
-@DefaultUrl("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
-
-public class LoginPage extends PageObject {
-
-
+@DefaultUrl(PagePaths.LOGIN)
+public class LoginPage extends PageObjectBase {
     @FindBy(name = "username")
     private WebElementFacade username;
 
